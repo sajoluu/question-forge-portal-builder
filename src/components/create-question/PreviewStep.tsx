@@ -31,9 +31,10 @@ import { QuestionFormData } from "@/types/question";
 interface PreviewStepProps {
   formData: QuestionFormData;
   updateFormData: (updates: Partial<QuestionFormData>) => void;
+  onNext: () => void;
 }
 
-export function PreviewStep({ formData }: PreviewStepProps) {
+export function PreviewStep({ formData, updateFormData, onNext }: PreviewStepProps) {
   const [settings, setSettings] = useState({
     questionAttachments: {
       answerSheet: false,
@@ -439,26 +440,35 @@ export function PreviewStep({ formData }: PreviewStepProps) {
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          <Button onClick={shuffleQuestions} variant="outline" className="w-full">
+          <Button onClick={shuffleQuestions} variant="outline" className="w-full btn-glow">
             <Shuffle className="h-4 w-4 mr-2" />
             Shuffle Questions
           </Button>
           
-          <Button onClick={handleSave} className="w-full">
+          <Button onClick={handleSave} className="w-full btn-glow">
             <Save className="h-4 w-4 mr-2" />
             Save Question Set
           </Button>
           
           <div className="grid grid-cols-2 gap-2">
-            <Button onClick={() => handleExport('pdf')} variant="outline">
+            <Button onClick={() => handleExport('pdf')} variant="outline" className="btn-glow">
               <Download className="h-4 w-4 mr-1" />
               Export PDF
             </Button>
-            <Button onClick={() => handleExport('print')} variant="outline">
+            <Button onClick={() => handleExport('print')} variant="outline" className="btn-glow">
               <Printer className="h-4 w-4 mr-1" />
               Print
             </Button>
           </div>
+
+          {/* Finalize Button */}
+          <Button 
+            onClick={onNext}
+            size="lg"
+            className="w-full btn-glow mt-4"
+          >
+            Finalize & Export
+          </Button>
         </div>
       </div>
     </div>
