@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Search, 
@@ -20,7 +21,13 @@ import {
   Calculator,
   FileText,
   School,
-  Clock
+  Clock,
+  Download,
+  Plus,
+  Minus,
+  Printer,
+  Settings,
+  Palette
 } from "lucide-react";
 import { QuestionFormData } from "@/types/question";
 
@@ -57,7 +64,18 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
     years: [] as string[],
     schools: [] as string[]
   });
-  const [showFilters, setShowFilters] = useState(false);
+  
+  // Settings state to match the image
+  const [settings, setSettings] = useState({
+    answerSheet: true,
+    questionMetadata: false,
+    branding: true,
+    watermark: false,
+    fontSize: 14,
+    paperSize: "A4",
+    columns: 1,
+    fontFamily: "Times New Roman"
+  });
 
   const questionsPerPage = 10;
   const totalPages = Math.ceil(mockQuestions.length / questionsPerPage);
@@ -104,274 +122,391 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
   const schoolOptions = ["ABC School", "XYZ College", "DEF Institute", "GHI Academy"];
 
   return (
-    <div className="space-y-6">
-      {/* Header with Question Panel */}
-      <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <Card className="shadow-soft">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-primary" />
-                Question Selection
-              </CardTitle>
-              <CardDescription>
-                Choose questions for your {formData.examName} examination
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </div>
-        
-        {/* Question Panel */}
-        <Card className="bg-primary/5 border-primary/20 shadow-soft">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-primary">Question Panel</CardTitle>
+    <div className="flex gap-6 h-[calc(100vh-200px)]">
+      {/* Main Content Area - 75% */}
+      <div className="flex-1 w-3/4 space-y-4 overflow-y-auto">
+        {/* Question Paper Preview */}
+        <Card className="shadow-soft bg-white">
+          <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-900 text-white">
+            <div className="text-center space-y-2">
+              <h2 className="text-lg font-bold">বগরাম ডা. রমজান আলী উচ্চ বিদ্যালয়</h2>
+              <div className="flex justify-between items-center text-sm">
+                <span>এইচএসসি</span>
+                <span>পদার্থবিজ্ঞান ১ম পত্র</span>
+              </div>
+              <div className="text-center">
+                <div className="font-semibold">পৃষ্ঠা-১</div>
+                <div className="text-xs">অধ্যায়ঃ ০২ : ভেক্টর</div>
+                <div className="text-xs">সময়ঃ ২০ মিনিট | পূর্ণমানঃ ২০</div>
+              </div>
+            </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary">{selectedQuestions.length}</div>
-              <div className="text-sm text-muted-foreground">Selected Questions</div>
+          <CardContent className="p-6">
+            <div className="mb-4 text-center text-sm">
+              <p>দ্রষ্টব্যঃ প্রশ্নপত্রে কোন প্রকার দাগ বা চিহ্ন দেওয়া যাবে না।</p>
             </div>
-            <div className="text-center">
-              <div className="text-lg font-semibold text-foreground">{formData.examName}</div>
-              <div className="text-sm text-muted-foreground">Target: {formData.totalQuestions} questions</div>
-            </div>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={() => window.print()}>
-                <Eye className="h-4 w-4 mr-1" />
-                Preview
-              </Button>
-              <Button variant="outline" size="sm">
-                <Save className="h-4 w-4 mr-1" />
-                Save
-              </Button>
+            
+            {/* Questions List */}
+            <div className="space-y-4">
+              {selectedQuestions.slice(0, 10).map((questionId, index) => {
+                const question = mockQuestions.find(q => q.id === questionId);
+                if (!question) return null;
+                
+                return (
+                  <div key={questionId} className="border-b pb-3">
+                    <div className="flex items-start gap-3">
+                      <span className="font-semibold text-slate-600 min-w-[30px]">
+                        {String(index + 1).padStart(2, '0')}.
+                      </span>
+                      <div className="flex-1">
+                        <p className="text-sm leading-relaxed">{question.question}</p>
+                        {question.type === 'mcq' && (
+                          <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
+                            <div>(ক) √(p² + q²)</div>
+                            <div>(খ) √(p² - q²)</div>
+                            <div>(গ) √(p² + q² + 2pq)</div>
+                            <div>(ঘ) p + q</div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
-      </div>
 
-      {/* Search and Filters */}
-      <Card className="shadow-soft">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2">
-              <Search className="h-5 w-5 text-primary" />
-              Search & Filter Questions
-            </CardTitle>
+        {/* Available Questions for Selection */}
+        <Card className="shadow-soft">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="h-5 w-5 text-blue-600" />
+                Available Questions
+              </CardTitle>
+              <div className="flex items-center gap-2">
+                <Button variant="outline" size="sm" onClick={selectAll} className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                  <CheckSquare className="h-4 w-4 mr-1" />
+                  Select All
+                </Button>
+                <span className="text-sm text-muted-foreground">
+                  {selectedQuestions.length} / {formData.totalQuestions} selected
+                </span>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {currentQuestions.map((question) => (
+              <div 
+                key={question.id}
+                className={`p-4 border rounded-lg transition-all cursor-pointer ${
+                  selectedQuestions.includes(question.id)
+                    ? 'border-blue-600 bg-blue-50'
+                    : 'border-border hover:border-blue-300'
+                }`}
+                onClick={() => toggleQuestion(question.id)}
+              >
+                <div className="flex items-start gap-4">
+                  <Checkbox 
+                    checked={selectedQuestions.includes(question.id)}
+                    onChange={() => {}}
+                  />
+                  
+                  <div className="flex-1 space-y-2">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge variant={question.type === 'mcq' ? 'default' : 'secondary'} className="bg-blue-600 text-white">
+                        {question.type.toUpperCase()}
+                      </Badge>
+                      <Badge variant="outline">{question.difficulty}</Badge>
+                      <Badge variant="outline">{question.marks} marks</Badge>
+                      
+                      {question.hasImage && (
+                        <Badge variant="outline" className="flex items-center gap-1">
+                          <ImageIcon className="h-3 w-3" />
+                          Image
+                        </Badge>
+                      )}
+                      
+                      {question.isMathematical && (
+                        <Badge variant="outline" className="flex items-center gap-1">
+                          <Calculator className="h-3 w-3" />
+                          Math
+                        </Badge>
+                      )}
+                      
+                      {question.isRepeated && (
+                        <Badge variant="outline" className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          Repeated
+                        </Badge>
+                      )}
+                    </div>
+                    
+                    <p className="text-sm text-foreground">{question.question}</p>
+                    
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <School className="h-3 w-3" />
+                        {question.board} - {question.year}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <FileText className="h-3 w-3" />
+                        {question.topics}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Pagination */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
             <Button 
               variant="outline" 
               size="sm"
-              onClick={() => setShowFilters(!showFilters)}
+              onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
             >
-              <Filter className="h-4 w-4 mr-1" />
-              Advanced Filters
+              <ChevronLeft className="h-4 w-4 mr-1" />
+              Previous
+            </Button>
+            
+            <span className="text-sm text-muted-foreground">
+              Page {currentPage} of {totalPages}
+            </span>
+            
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+            >
+              Next
+              <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
           </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {/* Keyword Search */}
-          <div className="space-y-2">
-            <Label htmlFor="keyword">Keyword Search</Label>
-            <Input
-              id="keyword"
-              placeholder="Search questions by keyword..."
-              value={filters.keyword}
-              onChange={(e) => setFilters({ ...filters, keyword: e.target.value })}
-            />
-          </div>
 
-          {/* Advanced Filters */}
-          {showFilters && (
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 p-4 bg-accent/50 rounded-lg">
-              <div className="space-y-2">
-                <Label>Special Search</Label>
-                <div className="space-y-2 max-h-32 overflow-y-auto">
-                  {specialSearchOptions.map((option) => (
-                    <div key={option} className="flex items-center space-x-2">
-                      <Checkbox 
-                        id={option}
-                        checked={filters.specialSearch.includes(option)}
-                        onCheckedChange={(checked) => {
-                          if (checked) {
-                            setFilters({ ...filters, specialSearch: [...filters.specialSearch, option] });
-                          } else {
-                            setFilters({ ...filters, specialSearch: filters.specialSearch.filter(s => s !== option) });
-                          }
-                        }}
-                      />
-                      <Label htmlFor={option} className="text-sm">{option}</Label>
-                    </div>
-                  ))}
-                </div>
+          <Button onClick={handleNext} size="lg" className="px-8 bg-blue-600 hover:bg-blue-700">
+            Continue to Preview
+          </Button>
+        </div>
+      </div>
+
+      {/* Right Sidebar - 25% */}
+      <div className="w-1/4 space-y-4 overflow-y-auto">
+        {/* Search and Filters */}
+        <Card className="shadow-soft">
+          <CardHeader className="bg-blue-600 text-white">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Search className="h-5 w-5" />
+              Advanced Filters
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-4 space-y-4">
+            {/* Keyword Search */}
+            <div className="space-y-2">
+              <Label htmlFor="keyword">Keyword Search</Label>
+              <Input
+                id="keyword"
+                placeholder="Search questions..."
+                value={filters.keyword}
+                onChange={(e) => setFilters({ ...filters, keyword: e.target.value })}
+              />
+            </div>
+
+            {/* Special Search */}
+            <div className="space-y-2">
+              <Label>Special Search</Label>
+              <div className="space-y-2 max-h-32 overflow-y-auto">
+                {specialSearchOptions.map((option) => (
+                  <div key={option} className="flex items-center space-x-2">
+                    <Checkbox 
+                      id={option}
+                      checked={filters.specialSearch.includes(option)}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          setFilters({ ...filters, specialSearch: [...filters.specialSearch, option] });
+                        } else {
+                          setFilters({ ...filters, specialSearch: filters.specialSearch.filter(s => s !== option) });
+                        }
+                      }}
+                    />
+                    <Label htmlFor={option} className="text-xs">{option}</Label>
+                  </div>
+                ))}
               </div>
+            </div>
 
+            {/* Topics */}
+            <div className="space-y-2">
+              <Label>Topics by Chapter</Label>
+              <Select>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select topics" />
+                </SelectTrigger>
+                <SelectContent>
+                  {topicOptions.map((topic) => (
+                    <SelectItem key={topic} value={topic}>{topic}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Board & Year */}
+            <div className="space-y-2">
+              <Label>Board & Year</Label>
               <div className="space-y-2">
-                <Label>Topics by Chapter</Label>
                 <Select>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select topics" />
+                    <SelectValue placeholder="Select year" />
                   </SelectTrigger>
                   <SelectContent>
-                    {topicOptions.map((topic) => (
-                      <SelectItem key={topic} value={topic}>{topic}</SelectItem>
+                    {yearOptions.map((year) => (
+                      <SelectItem key={year} value={year}>{year}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select board" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {boardOptions.map((board) => (
+                      <SelectItem key={board} value={board}>{board}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
-
-              <div className="space-y-2">
-                <Label>Board & Year</Label>
-                <div className="space-y-2">
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select year" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {yearOptions.map((year) => (
-                        <SelectItem key={year} value={year}>{year}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select board" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {boardOptions.map((board) => (
-                        <SelectItem key={board} value={board}>{board}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
             </div>
-          )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* Question List */}
-      <Card className="shadow-soft">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <CardTitle>Available Questions</CardTitle>
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={selectAll}>
-                <CheckSquare className="h-4 w-4 mr-1" />
-                Select All
+        {/* Export Settings */}
+        <Card className="shadow-soft">
+          <CardHeader className="bg-blue-600 text-white">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Download className="h-5 w-5" />
+              Export Settings
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-4 space-y-4">
+            {/* Action Buttons */}
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="outline" size="sm" className="bg-red-500 text-white hover:bg-red-600">
+                <Download className="h-4 w-4 mr-1" />
+                ডাউনলোড
               </Button>
-              <span className="text-sm text-muted-foreground">
-                {selectedQuestions.length} / {formData.totalQuestions} selected
-              </span>
+              <Button variant="outline" size="sm" className="bg-green-500 text-white hover:bg-green-600">
+                <Printer className="h-4 w-4 mr-1" />
+                প্রিন্ট
+              </Button>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {currentQuestions.map((question) => (
-            <div 
-              key={question.id}
-              className={`p-4 border rounded-lg transition-all cursor-pointer ${
-                selectedQuestions.includes(question.id)
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border hover:border-accent'
-              }`}
-              onClick={() => toggleQuestion(question.id)}
-            >
-              <div className="flex items-start gap-4">
-                <Checkbox 
-                  checked={selectedQuestions.includes(question.id)}
-                  onChange={() => {}}
-                />
-                
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge variant={question.type === 'mcq' ? 'default' : 'secondary'}>
-                      {question.type.toUpperCase()}
-                    </Badge>
-                    <Badge variant="outline">{question.difficulty}</Badge>
-                    <Badge variant="outline">{question.marks} marks</Badge>
-                    
-                    {question.hasImage && (
-                      <Badge variant="outline" className="flex items-center gap-1">
-                        <ImageIcon className="h-3 w-3" />
-                        Image
-                      </Badge>
-                    )}
-                    
-                    {question.isMathematical && (
-                      <Badge variant="outline" className="flex items-center gap-1">
-                        <Calculator className="h-3 w-3" />
-                        Math
-                      </Badge>
-                    )}
-                    
-                    {question.isRepeated && (
-                      <Badge variant="outline" className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        Repeated
-                      </Badge>
-                    )}
-                  </div>
-                  
-                  <p className="text-sm text-foreground">{question.question}</p>
-                  
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <School className="h-3 w-3" />
-                      {question.board} - {question.year}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <FileText className="h-3 w-3" />
-                      {question.topics}
-                    </span>
-                  </div>
-                </div>
+
+            {/* Paper Size */}
+            <div className="space-y-2">
+              <Label>Paper Size</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {["A4", "A5", "Legal", "Letter"].map((size) => (
+                  <Button 
+                    key={size}
+                    variant={settings.paperSize === size ? "default" : "outline"}
+                    size="sm"
+                    className={`text-xs ${settings.paperSize === size ? 'bg-blue-600 text-white' : ''}`}
+                    onClick={() => setSettings({...settings, paperSize: size})}
+                  >
+                    {size}
+                  </Button>
+                ))}
               </div>
             </div>
-          ))}
-        </CardContent>
-      </Card>
 
-      {/* Pagination and Navigation */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-            disabled={currentPage === 1}
-          >
-            <ChevronLeft className="h-4 w-4 mr-1" />
-            Previous
-          </Button>
-          
-          <span className="text-sm text-muted-foreground">
-            Page {currentPage} of {totalPages}
-          </span>
-          
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-            disabled={currentPage === totalPages}
-          >
-            Next
-            <ChevronRight className="h-4 w-4 ml-1" />
-          </Button>
-        </div>
+            {/* Font Settings */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <Label>ফন্ট সাইজ</Label>
+                <div className="flex items-center gap-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setSettings({...settings, fontSize: Math.max(8, settings.fontSize - 1)})}
+                  >
+                    <Minus className="h-3 w-3" />
+                  </Button>
+                  <span className="text-sm min-w-[20px] text-center">{settings.fontSize}</span>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => setSettings({...settings, fontSize: Math.min(24, settings.fontSize + 1)})}
+                  >
+                    <Plus className="h-3 w-3" />
+                  </Button>
+                </div>
+              </div>
+              
+              <Select value={settings.fontFamily} onValueChange={(value) => setSettings({...settings, fontFamily: value})}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Times New Roman">Times New Roman</SelectItem>
+                  <SelectItem value="Arial">Arial</SelectItem>
+                  <SelectItem value="Calibri">Calibri</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-        <div className="flex items-center gap-2">
-          <Button 
-            variant="outline" 
-            size="sm"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <ChevronUp className="h-4 w-4 mr-1" />
-            Scroll to Top
-          </Button>
-          
-          <Button onClick={handleNext} size="lg" className="px-8">
-            Continue to Preview
-          </Button>
-        </div>
+            {/* Toggle Settings */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm">উত্তরপত্র</Label>
+                <Switch 
+                  checked={settings.answerSheet}
+                  onCheckedChange={(checked) => setSettings({...settings, answerSheet: checked})}
+                />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <Label className="text-sm">প্রশ্ন মেটাডেটা</Label>
+                <Switch 
+                  checked={settings.questionMetadata}
+                  onCheckedChange={(checked) => setSettings({...settings, questionMetadata: checked})}
+                />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <Label className="text-sm">ব্র্যান্ডিং</Label>
+                <Switch 
+                  checked={settings.branding}
+                  onCheckedChange={(checked) => setSettings({...settings, branding: checked})}
+                />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <Label className="text-sm">ওয়াটারমার্ক</Label>
+                <Switch 
+                  checked={settings.watermark}
+                  onCheckedChange={(checked) => setSettings({...settings, watermark: checked})}
+                />
+              </div>
+            </div>
+
+            {/* Background Color */}
+            <div className="space-y-2">
+              <Label>Background Color</Label>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-white border rounded cursor-pointer"></div>
+                <Button variant="outline" size="sm" className="flex-1">
+                  <Palette className="h-4 w-4 mr-1" />
+                  Choose
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
