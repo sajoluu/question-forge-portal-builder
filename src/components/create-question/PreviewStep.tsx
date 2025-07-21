@@ -26,7 +26,7 @@ import {
   Droplets,
   MapPin
 } from "lucide-react";
-import { QuestionFormData } from "@/pages/CreateQuestion";
+import { QuestionFormData } from "@/types/question";
 
 interface PreviewStepProps {
   formData: QuestionFormData;

@@ -22,7 +22,7 @@ import {
   School,
   Clock
 } from "lucide-react";
-import { QuestionFormData } from "@/pages/CreateQuestion";
+import { QuestionFormData } from "@/types/question";
 
 interface QuestionSelectionStepProps {
   formData: QuestionFormData;

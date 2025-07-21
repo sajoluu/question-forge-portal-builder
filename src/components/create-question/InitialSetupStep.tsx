@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, BookOpen, Brain, GraduationCap } from "lucide-react";
-import { QuestionFormData } from "@/pages/CreateQuestion";
+import { QuestionFormData } from "@/types/question";
 
 interface InitialSetupStepProps {
   formData: QuestionFormData;

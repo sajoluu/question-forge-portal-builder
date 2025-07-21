@@ -8,27 +8,28 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 98%;
-    --foreground: 240 10% 15%;
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 15%;
+    --card-foreground: 222 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 15%;
+    --popover-foreground: 222 84% 4.9%;
 
-    --primary: 245 80% 55%;
+    --primary: 200 95% 55%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 245 80% 50%;
+    --primary-hover: 200 95% 50%;
+    --primary-glow: 200 95% 65%;
 
-    --secondary: 240 10% 96%;
-    --secondary-foreground: 240 10% 25%;
+    --secondary: 210 40% 12%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 10% 96%;
-    --muted-foreground: 240 5% 50%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 245 60% 95%;
-    --accent-foreground: 245 80% 35%;
+    --accent: 200 95% 95%;
+    --accent-foreground: 200 95% 35%;
 
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -43,14 +44,17 @@ All colors MUST be HSL.
     --warning: 38 92% 50%;
     --warning-foreground: 38 92% 15%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(245 80% 55%), hsl(260 80% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(240 10% 98%), hsl(240 10% 96%));
+    --gradient-primary: linear-gradient(135deg, hsl(200 95% 55%), hsl(210 95% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 40% 12%), hsl(220 40% 15%));
+    --gradient-glow: linear-gradient(135deg, hsl(200 95% 65%), hsl(210 95% 70%));
     
-    --shadow-soft: 0 4px 6px -1px hsl(240 10% 15% / 0.1), 0 2px 4px -1px hsl(240 10% 15% / 0.06);
-    --shadow-medium: 0 10px 15px -3px hsl(240 10% 15% / 0.1), 0 4px 6px -2px hsl(240 10% 15% / 0.05);
-    --shadow-large: 0 25px 50px -12px hsl(240 10% 15% / 0.25);
+    --shadow-soft: 0 4px 6px -1px hsl(222 84% 4.9% / 0.1), 0 2px 4px -1px hsl(222 84% 4.9% / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(222 84% 4.9% / 0.1), 0 4px 6px -2px hsl(222 84% 4.9% / 0.05);
+    --shadow-large: 0 25px 50px -12px hsl(222 84% 4.9% / 0.25);
+    --shadow-glow: 0 0 30px hsl(200 95% 55% / 0.3);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.2s ease;
 
     --radius: 0.5rem;
 
@@ -72,17 +76,18 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 84% 4.9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 200 95% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 200 95% 65%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -117,5 +122,27 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-glow {
+    @apply transition-all duration-200 hover:shadow-glow;
+  }
+  
+  .nav-item {
+    @apply relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+  
+  .nav-item:hover {
+    @apply bg-accent/50 text-accent-foreground;
+  }
+  
+  .nav-item.active {
+    @apply bg-primary text-primary-foreground shadow-glow;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-medium hover:-translate-y-1;
   }
 }

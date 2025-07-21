@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Clock, User, BookOpen, FileText, Target } from "lucide-react";
-import { QuestionFormData } from "@/pages/CreateQuestion";
+import { QuestionFormData } from "@/types/question";
 
 interface QuestionSetConfirmationProps {
   formData: QuestionFormData;

@@ -3,9 +3,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AppLayout } from "./components/layout/AppLayout";
+import { ModernLayout } from "./components/layout/ModernLayout";
 import Dashboard from "./pages/Dashboard";
 import CreateQuestion from "./pages/CreateQuestion";
+import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,14 +17,20 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AppLayout>
+        <ModernLayout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/create-question/*" element={<CreateQuestion />} />
+            <Route path="/create-question" element={<CreateQuestion />} />
+            <Route path="/books" element={<Index />} />
+            <Route path="/question-library" element={<Index />} />
+            <Route path="/package-management" element={<Index />} />
+            <Route path="/profile-management" element={<Index />} />
+            <Route path="/help-line" element={<Index />} />
+            <Route path="/contact" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </AppLayout>
+        </ModernLayout>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
