@@ -14,7 +14,12 @@ import {
   Bell,
   User,
   Menu,
-  Shield
+  Shield,
+  Users,
+  Settings,
+  FileText,
+  BarChart3,
+  ShieldCheck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -24,6 +29,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "@/components/ui/navigation-menu";
 
 const menuItems = [
   {
@@ -110,6 +116,201 @@ export function TopNavigation() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1">
+          {/* Mega Menu */}
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="nav-item text-white hover:bg-white/10 hover:text-white">
+                  Admin Management
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-card border-border p-6 w-[90vw] max-w-6xl">
+                  <div className="grid gap-8 md:grid-cols-2">
+                    {/* Left: Admin Management columns */}
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-semibold text-muted-foreground">Admin Management</h3>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <Users className="h-4 w-4" />
+                            User Management
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">View Users</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Add User</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Edit User</NavLink></li>
+                            <li><NavLink to="/roles/permissions" className="hover:underline">User Permissions</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <FileText className="h-4 w-4" />
+                            Content Management
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Manage Pages</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Manage Posts</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Media Library</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <Settings className="h-4 w-4" />
+                            System Settings
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Site Settings</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Notifications</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Backup & Restore</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <BarChart3 className="h-4 w-4" />
+                            Reporting & Analytics
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">View Reports</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Export Data</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Analytics Dashboard</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <ShieldCheck className="h-4 w-4" />
+                            Security Management
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="/roles" className="hover:underline">Manage Roles</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Security Logs</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Audit Trail</NavLink></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Other Sections columns */}
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-semibold text-muted-foreground">Other Sections</h3>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Services</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Service 1</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Service 2</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Service 3</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">About</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Company Overview</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Team</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Career Opportunities</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Contact</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="/contact" className="hover:underline">Contact Form</NavLink></li>
+                            <li><NavLink to="/help-line" className="hover:underline">Support</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Office Locations</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Blog</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Latest Posts</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Categories</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Archive</NavLink></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="nav-item text-white hover:bg-white/10 hover:text-white">
+                  Other Sections
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="bg-card border-border p-6 w-[90vw] max-w-6xl">
+                  {/* Reuse same content for simplicity */}
+                  <div className="grid gap-8 md:grid-cols-2">
+                    {/* Left: Admin Management (same as above) */}
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-semibold text-muted-foreground">Admin Management</h3>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <Users className="h-4 w-4" />
+                            User Management
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">View Users</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Add User</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Edit User</NavLink></li>
+                            <li><NavLink to="/roles/permissions" className="hover:underline">User Permissions</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 flex items-center gap-2 text-foreground/80 font-medium">
+                            <FileText className="h-4 w-4" />
+                            Content Management
+                          </div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Manage Pages</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Manage Posts</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Media Library</NavLink></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Other Sections (same as above) */}
+                    <div className="space-y-6">
+                      <h3 className="text-sm font-semibold text-muted-foreground">Other Sections</h3>
+                      <div className="grid grid-cols-2 gap-6">
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Services</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Service 1</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Service 2</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Service 3</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">About</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Company Overview</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Team</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Career Opportunities</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Contact</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="/contact" className="hover:underline">Contact Form</NavLink></li>
+                            <li><NavLink to="/help-line" className="hover:underline">Support</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Office Locations</NavLink></li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div className="mb-2 font-medium text-foreground/80">Blog</div>
+                          <ul className="space-y-1 text-sm">
+                            <li><NavLink to="#" className="hover:underline">Latest Posts</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Categories</NavLink></li>
+                            <li><NavLink to="#" className="hover:underline">Archive</NavLink></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
           {menuItems.map((item) => (
             <div key={item.title} className="relative">
               {item.subItems ? (
