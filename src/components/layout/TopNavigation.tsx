@@ -76,6 +76,15 @@ const menuItems = [
     icon: HelpCircle,
   },
   {
+    title: "Menu Management",
+    url: "/menus",
+    icon: Menu,
+    subItems: [
+      { title: "Menu List", url: "/menus" },
+      { title: "Add Menu", url: "/menus/add" },
+    ],
+  },
+  {
     title: "Contact",
     url: "/contact",
     icon: MessageSquare,
