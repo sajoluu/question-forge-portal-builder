@@ -117,13 +117,13 @@ export function TopNavigation() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1">
           {/* Mega Menu */}
-          <NavigationMenu>
+          <NavigationMenu className="z-50">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="nav-item text-white hover:bg-white/10 hover:text-white">
                   Admin Management
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-card border-border p-6 w-[90vw] max-w-6xl z-50 rounded-lg shadow-soft">
+                <NavigationMenuContent className="bg-popover text-popover-foreground ring-1 ring-border p-6 w-[90vw] max-w-6xl z-50 rounded-lg shadow-soft">
                   <div className="grid gap-8 md:grid-cols-2">
                     {/* Left: Admin Management columns */}
                     <div className="space-y-6">
@@ -234,7 +234,7 @@ export function TopNavigation() {
                 <NavigationMenuTrigger className="nav-item text-white hover:bg-white/10 hover:text-white">
                   Other Sections
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="bg-card border-border p-6 w-[90vw] max-w-6xl z-50 rounded-lg shadow-soft">
+                <NavigationMenuContent className="bg-popover text-popover-foreground ring-1 ring-border p-6 w-[90vw] max-w-6xl z-50 rounded-lg shadow-soft">
                   {/* Reuse same content for simplicity */}
                   <div className="grid gap-8 md:grid-cols-2">
                     {/* Left: Admin Management (same as above) */}
@@ -325,7 +325,7 @@ export function TopNavigation() {
                       <ChevronDown className="h-3 w-3 ml-1" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-card border-border z-50 rounded-md shadow-soft">
+                  <DropdownMenuContent className="bg-popover text-popover-foreground ring-1 ring-border z-50 rounded-md shadow-soft">
                     {item.subItems.map((subItem) => (
                       <DropdownMenuItem key={subItem.title} asChild>
                         <NavLink 
