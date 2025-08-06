@@ -13,7 +13,8 @@ import {
   GraduationCap,
   Bell,
   User,
-  Menu
+  Menu,
+  Shield
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -58,6 +59,16 @@ const menuItems = [
     title: "Profile Management",
     url: "/profile-management",
     icon: UserCog,
+  },
+  {
+    title: "Role & Permission",
+    url: "/roles",
+    icon: Shield,
+    subItems: [
+      { title: "Role List", url: "/roles" },
+      { title: "Add Role", url: "/roles/add" },
+      { title: "Permission Matrix", url: "/roles/permissions" },
+    ],
   },
   {
     title: "Help Line",
