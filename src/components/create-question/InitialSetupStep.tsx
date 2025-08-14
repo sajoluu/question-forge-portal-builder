@@ -50,7 +50,7 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
   return (
     <div className="space-y-6">
       {/* Question Type Selection */}
-      <Card className="shadow-soft">
+      {/* <Card className="shadow-soft">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5 text-primary" />
@@ -101,10 +101,10 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             <p className="text-sm text-destructive mt-2">{errors.questionType}</p>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* Method Selection */}
-      <Card className="shadow-soft">
+      {/* <Card className="shadow-soft">
         <CardHeader>
           <CardTitle>Source Method</CardTitle>
           <CardDescription>Select the source material for your questions</CardDescription>
@@ -143,7 +143,7 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             <p className="text-sm text-destructive mt-2">{errors.method}</p>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
       {/* Exam Information */}
       <Card className="shadow-soft">

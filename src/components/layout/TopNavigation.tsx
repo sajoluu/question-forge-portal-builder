@@ -75,16 +75,16 @@ export function TopNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-gradient-secondary shadow-soft backdrop-blur">
-      <div className="flex h-16 items-center justify-between px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-gradient-secondary shadow-sm backdrop-blur">
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="bg-gradient-primary p-2 rounded-lg shadow-glow">
-            <GraduationCap className="h-6 w-6 text-white" />
+        <div className="flex items-center gap-2">
+          <div className="bg-gradient-primary p-1.5 rounded-md shadow-sm">
+            <GraduationCap className="h-5 w-5 text-white" />
           </div>
           <div className="hidden sm:block">
-            <h2 className="text-lg font-semibold text-white">EduPortal</h2>
-            <p className="text-sm text-white/70">Teacher Dashboard</p>
+            <h2 className="text-base font-semibold text-white">Question Bank</h2>
+            <p className="text-xs text-white/70">Teacher Dashboard</p>
           </div>
         </div>
 
@@ -97,19 +97,19 @@ export function TopNavigation() {
                   <DropdownMenuTrigger asChild>
                     <Button 
                       variant="ghost" 
-                      className="nav-item text-white hover:bg-white/10 hover:text-white"
+                      className="flex items-center px-2 py-1 text-sm text-white hover:bg-white/10"
                     >
-                      <item.icon className="h-4 w-4 mr-2" />
+                      <item.icon className="h-4 w-4 mr-1.5" />
                       {item.title}
                       <ChevronDown className="h-3 w-3 ml-1" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-card border-border">
+                  <DropdownMenuContent className="bg-card border-border min-w-[160px]">
                     {item.subItems.map((subItem) => (
                       <DropdownMenuItem key={subItem.title} asChild>
                         <NavLink 
                           to={subItem.url}
-                          className="w-full cursor-pointer"
+                          className="w-full text-sm py-1.5 px-3"
                         >
                           {subItem.title}
                         </NavLink>
@@ -121,12 +121,12 @@ export function TopNavigation() {
                 <NavLink 
                   to={item.url}
                   className={({ isActive }) => 
-                    `nav-item text-white hover:bg-white/10 hover:text-white ${
-                      isActive ? 'bg-primary shadow-glow' : ''
+                    `flex items-center px-2 py-1 text-sm text-white hover:bg-white/10 rounded-md ${
+                      isActive ? 'bg-primary shadow-sm' : ''
                     }`
                   }
                 >
-                  <item.icon className="h-4 w-4 mr-2" />
+                  <item.icon className="h-4 w-4 mr-1.5" />
                   {item.title}
                 </NavLink>
               )}
@@ -135,17 +135,17 @@ export function TopNavigation() {
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:block text-sm text-white/70">
-            Welcome back, <span className="font-medium text-white">Teacher</span>
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block text-xs text-white/70">
+            Welcome, <span className="font-medium text-white">Teacher</span>
           </div>
           
-          <Button variant="ghost" size="icon" className="relative text-white hover:bg-white/10">
-            <Bell className="h-5 w-5" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></span>
+          <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+            <Bell className="h-4 w-4" />
+            {/* <span className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></span> */}
           </Button>
           
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-7 w-7">
             <AvatarImage src="" alt="Profile" />
             <AvatarFallback className="bg-primary text-primary-foreground">
               <User className="h-4 w-4" />
@@ -156,10 +156,10 @@ export function TopNavigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden text-white hover:bg-white/10"
+            className="lg:hidden text-white hover:bg-white/10 h-8 w-8"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-4 w-4" />
           </Button>
         </div>
       </div>
@@ -167,20 +167,20 @@ export function TopNavigation() {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-white/10 bg-secondary">
-          <div className="px-4 py-4 space-y-2">
+          <div className="px-3 py-3 space-y-1">
             {menuItems.map((item) => (
               <div key={item.title}>
                 {item.subItems ? (
                   <div className="space-y-1">
-                    <div className="text-white/70 text-sm font-medium px-3 py-2">
-                      <item.icon className="h-4 w-4 inline mr-2" />
+                    <div className="text-white/70 text-xs font-medium px-2 py-1.5">
+                      <item.icon className="h-4 w-4 inline mr-1.5" />
                       {item.title}
                     </div>
                     {item.subItems.map((subItem) => (
                       <NavLink
                         key={subItem.title}
                         to={subItem.url}
-                        className="block px-6 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md"
+                        className="block px-4 py-1.5 text-xs text-white/80 hover:bg-white/10 rounded-md"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {subItem.title}
@@ -191,15 +191,15 @@ export function TopNavigation() {
                   <NavLink
                     to={item.url}
                     className={({ isActive }) =>
-                      `flex items-center px-3 py-2 text-sm rounded-md ${
+                      `flex items-center px-2 py-1.5 text-xs rounded-md ${
                         isActive 
-                          ? 'bg-primary text-primary-foreground shadow-glow' 
-                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                          ? 'bg-primary text-primary-foreground shadow-sm' 
+                          : 'text-white/80 hover:bg-white/10'
                       }`
                     }
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <item.icon className="h-4 w-4 mr-2" />
+                    <item.icon className="h-4 w-4 mr-1.5" />
                     {item.title}
                   </NavLink>
                 )}
