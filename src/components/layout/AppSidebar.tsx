@@ -122,9 +122,10 @@ export function AppSidebar() {
     setOpenGroups(prev => ({ ...prev, [title]: !prev[title] }));
   };
 
-  // Auto-expand groups with active items
+  // Auto-expand groups with active items on mount
   const shouldBeOpen = (item: typeof menuItems[0]) => {
-    return openGroups[item.title] ?? (hasActiveSubItem(item.subItems) || isActive(item.url));
+    const hasActive = hasActiveSubItem(item.subItems) || isActive(item.url);
+    return openGroups[item.title] !== undefined ? openGroups[item.title] : hasActive;
   };
 
   return (
@@ -149,13 +150,13 @@ export function AppSidebar() {
       </SidebarHeader>
 
       {/* Content */}
-      <SidebarContent className="py-6 bg-sage">
+      <SidebarContent className="py-4 bg-sage overflow-y-auto max-h-[calc(100vh-200px)]">
         <SidebarGroup>
-          <SidebarGroupLabel className={`text-guardey-dark font-semibold text-base px-4 ${isCollapsed ? 'sr-only' : ''}`}>
+          <SidebarGroupLabel className={`text-guardey-dark font-semibold text-base px-4 mb-2 ${isCollapsed ? 'sr-only' : ''}`}>
             Navigation
           </SidebarGroupLabel>
-          <SidebarGroupContent className="mt-4">
-            <SidebarMenu className="space-y-2 px-3">
+          <SidebarGroupContent>
+            <SidebarMenu className="space-y-1 px-2">
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
@@ -166,34 +167,36 @@ export function AppSidebar() {
                     >
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton
-                          className={`w-full justify-between text-guardey-dark hover:bg-guardey-lime/30 hover:text-guardey-dark transition-all duration-200 p-3 rounded-xl font-medium shadow-sm ${
-                            hasActiveSubItem(item.subItems) ? 'bg-guardey-lime text-guardey-lime-foreground shadow-lg' : 'bg-sage border border-guardey-teal/20'
-                          }`}
+                          className={`w-full justify-between transition-all duration-200 rounded-lg font-medium ${
+                            hasActiveSubItem(item.subItems) || isActive(item.url)
+                              ? 'bg-guardey-lime text-guardey-lime-foreground shadow-md' 
+                              : 'text-guardey-dark hover:bg-guardey-lime/20 hover:text-guardey-dark bg-sage/50'
+                          } ${isCollapsed ? 'p-2' : 'p-3'}`}
                           tooltip={isCollapsed ? item.title : undefined}
                         >
-                          <div className="flex items-center gap-4">
-                            <item.icon className="h-6 w-6 flex-shrink-0" />
-                            {!isCollapsed && <span className="text-base">{item.title}</span>}
+                          <div className="flex items-center gap-3">
+                            <item.icon className={`flex-shrink-0 ${isCollapsed ? 'h-5 w-5' : 'h-5 w-5'}`} />
+                            {!isCollapsed && <span className="text-sm font-medium">{item.title}</span>}
                           </div>
                           {!isCollapsed && (
-                            <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${
+                            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
                               shouldBeOpen(item) ? 'rotate-180' : ''
                             }`} />
                           )}
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
                       {!isCollapsed && (
-                        <CollapsibleContent className="transition-all duration-300">
-                          <SidebarMenuSub className="ml-8 mt-3 space-y-2">
+                        <CollapsibleContent className="transition-all duration-300 ease-in-out">
+                          <SidebarMenuSub className="ml-6 mt-1 space-y-1 border-l-2 border-guardey-teal/20 pl-4">
                             {item.subItems.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
                                   <NavLink
                                     to={subItem.url}
-                                    className={`text-sm transition-all duration-200 p-3 rounded-lg border ${
+                                    className={`text-xs transition-all duration-200 p-2 rounded-md block ${
                                       isActive(subItem.url)
-                                        ? 'bg-guardey-lime text-guardey-lime-foreground font-semibold shadow-md border-guardey-lime'
-                                        : 'text-sage-foreground hover:bg-guardey-lime/20 hover:text-guardey-dark bg-sage border-guardey-teal/20'
+                                        ? 'bg-guardey-lime text-guardey-lime-foreground font-medium shadow-sm'
+                                        : 'text-sage-foreground hover:bg-guardey-lime/15 hover:text-guardey-dark'
                                     }`}
                                   >
                                     {subItem.title}
@@ -209,14 +212,14 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
                       <NavLink
                         to={item.url}
-                        className={`flex items-center gap-4 w-full transition-all duration-200 p-3 rounded-xl font-medium shadow-sm border ${
+                        className={`flex items-center gap-3 w-full transition-all duration-200 rounded-lg font-medium ${
                           isActive(item.url)
-                            ? 'bg-guardey-lime text-guardey-lime-foreground shadow-lg border-guardey-lime'
-                            : 'text-guardey-dark hover:bg-guardey-lime/30 hover:text-guardey-dark bg-sage border-guardey-teal/20'
-                        }`}
+                            ? 'bg-guardey-lime text-guardey-lime-foreground shadow-md'
+                            : 'text-guardey-dark hover:bg-guardey-lime/20 hover:text-guardey-dark bg-sage/50'
+                        } ${isCollapsed ? 'p-2' : 'p-3'}`}
                       >
-                        <item.icon className="h-6 w-6 flex-shrink-0" />
-                        {!isCollapsed && <span className="text-base">{item.title}</span>}
+                        <item.icon className={`flex-shrink-0 ${isCollapsed ? 'h-5 w-5' : 'h-5 w-5'}`} />
+                        {!isCollapsed && <span className="text-sm font-medium">{item.title}</span>}
                       </NavLink>
                     </SidebarMenuButton>
                   )}
