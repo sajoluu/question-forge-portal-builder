@@ -121,9 +121,9 @@ export default {
 				"2xl": "var(--radius-xl)",
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['Poppins', 'system-ui', 'sans-serif'],
-				bangla: ['Noto Sans Bengali', 'system-ui', 'sans-serif'],
+				sans: ['Kalpurush', 'system-ui', 'sans-serif'],
+				display: ['Kalpurush', 'system-ui', 'sans-serif'],
+				bangla: ['Kalpurush', 'system-ui', 'sans-serif'],
 			},
 			keyframes: {
 				"accordion-down": {
