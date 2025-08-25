@@ -70,12 +70,24 @@ export default {
 				warning: {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
+				},
+				guardey: {
+					dark: 'hsl(var(--guardey-dark))',
+					'dark-foreground': 'hsl(var(--guardey-dark-foreground))',
+					lime: 'hsl(var(--guardey-lime))',
+					'lime-foreground': 'hsl(var(--guardey-lime-foreground))',
+					teal: 'hsl(var(--guardey-teal))',
+					'teal-foreground': 'hsl(var(--guardey-teal-foreground))',
+					purple: 'hsl(var(--guardey-purple))',
+					'purple-foreground': 'hsl(var(--guardey-purple-foreground))'
 				}
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-secondary': 'var(--gradient-secondary)',
-				'gradient-glow': 'var(--gradient-glow)'
+				'gradient-glow': 'var(--gradient-glow)',
+				'gradient-guardey': 'var(--gradient-guardey)',
+				'gradient-guardey-accent': 'var(--gradient-guardey-accent)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
