@@ -19,7 +19,7 @@ export function ModernFeatureCard({
   gradient = "primary",
   className,
   onAction,
-  actionLabel = "Learn More"
+  actionLabel = "আরও জানুন"
 }: ModernFeatureCardProps) {
   const gradientClasses = {
     primary: "bg-gradient-primary",

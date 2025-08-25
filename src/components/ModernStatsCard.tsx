@@ -66,7 +66,7 @@ export function ModernStatsCard({
               <span className={getTrendColor(change.trend)}>
                 {getTrendIcon(change.trend)} {change.value}
               </span>
-              <span className="text-muted-foreground">vs last period</span>
+              <span className="text-muted-foreground">পূর্ববর্তী সময়ের তুলনায়</span>
             </div>
           )}
         </div>

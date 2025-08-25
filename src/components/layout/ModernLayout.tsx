@@ -23,12 +23,12 @@ export function ModernLayout({ children }: ModernLayoutProps) {
             <div className="flex items-center gap-4">
               <SidebarTrigger className="text-foreground hover:bg-white/10 hover:text-accent-light p-3 rounded-xl transition-all duration-300 md:hidden lg:flex" />
               <div className="text-lg md:text-xl font-bold text-gradient truncate">
-                Modern Dashboard
+                আধুনিক ড্যাশবোর্ড
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="text-sm md:text-base text-muted-foreground hidden sm:block">
-                Professional Interface
+                পেশাদার ইন্টারফেস
               </div>
               <div className="w-8 h-8 bg-gradient-primary rounded-full animate-glow"></div>
             </div>

@@ -43,65 +43,65 @@ import {
 
 const menuItems = [
   {
-    title: "Dashboard",
+    title: "ড্যাশবোর্ড",
     url: "/",
     icon: LayoutDashboard,
   },
   {
-    title: "Create Question",
+    title: "প্রশ্ন তৈরি করুন",
     url: "/create-question",
     icon: PlusCircle,
     subItems: [
-      { title: "Question Generator", url: "/create-question" },
-      { title: "Saved Drafts", url: "/create-question/drafts" },
+      { title: "প্রশ্ন জেনারেটর", url: "/create-question" },
+      { title: "সংরক্ষিত খসড়া", url: "/create-question/drafts" },
     ]
   },
   {
-    title: "Books",
+    title: "বই",
     url: "/books",
     icon: BookOpen,
   },
   {
-    title: "Question Library",
+    title: "প্রশ্ন লাইব্রেরি",
     url: "/question-library",
     icon: FileQuestion,
   },
   {
-    title: "Package Management",
+    title: "প্যাকেজ ব্যবস্থাপনা",
     url: "/package-management",
     icon: Package,
   },
   {
-    title: "Profile Management",
+    title: "প্রোফাইল ব্যবস্থাপনা",
     url: "/profile-management",
     icon: UserCog,
   },
   {
-    title: "Role & Permission",
+    title: "ভূমিকা ও অনুমতি",
     url: "/roles",
     icon: Shield,
     subItems: [
-      { title: "Role List", url: "/roles" },
-      { title: "Add Role", url: "/roles/add" },
-      { title: "Permission Matrix", url: "/roles/permissions" },
+      { title: "ভূমিকার তালিকা", url: "/roles" },
+      { title: "ভূমিকা যোগ করুন", url: "/roles/add" },
+      { title: "অনুমতি ম্যাট্রিক্স", url: "/roles/permissions" },
     ],
   },
   {
-    title: "Menu Management",
+    title: "মেনু ব্যবস্থাপনা",
     url: "/menus",
     icon: MenuIcon,
     subItems: [
-      { title: "Menu List", url: "/menus" },
-      { title: "Add Menu", url: "/menus/add" },
+      { title: "মেনু তালিকা", url: "/menus" },
+      { title: "মেনু যোগ করুন", url: "/menus/add" },
     ],
   },
   {
-    title: "Help Line",
+    title: "সহায়তা লাইন",
     url: "/help-line",
     icon: HelpCircle,
   },
   {
-    title: "Contact",
+    title: "যোগাযোগ",
     url: "/contact",
     icon: MessageSquare,
   },
@@ -142,8 +142,8 @@ export function AppSidebar() {
           </div>
           {!isCollapsed && (
             <div>
-              <h2 className="text-xl font-bold text-guardey-dark">Question Bank</h2>
-              <p className="text-sm text-sage-foreground">Teacher Dashboard</p>
+              <h2 className="text-xl font-bold text-guardey-dark">প্রশ্ন ব্যাংক</h2>
+              <p className="text-sm text-sage-foreground">শিক্ষক ড্যাশবোর্ড</p>
             </div>
           )}
         </div>
@@ -153,7 +153,7 @@ export function AppSidebar() {
       <SidebarContent className="py-4 bg-sage overflow-y-auto max-h-[calc(100vh-200px)]">
         <SidebarGroup>
           <SidebarGroupLabel className={`text-guardey-dark font-semibold text-base px-4 mb-2 ${isCollapsed ? 'sr-only' : ''}`}>
-            Navigation
+            নেভিগেশন
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1 px-2">
@@ -253,7 +253,7 @@ export function AppSidebar() {
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
               <div className="text-sm text-sage-foreground">
-                Welcome, <span className="font-semibold text-guardey-dark">Teacher</span>
+                স্বাগতম, <span className="font-semibold text-guardey-dark">শিক্ষক</span>
               </div>
             </div>
           )}
