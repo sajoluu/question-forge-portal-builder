@@ -129,34 +129,33 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      className={`border-r border-guardey-teal/30 bg-gradient-guardey transition-all duration-300 ${
-        isCollapsed ? "w-16" : "w-64"
-      }`}
+      className="border-r-2 border-guardey-teal bg-sage shadow-2xl"
       collapsible="icon"
+      style={{ minHeight: '100vh', zIndex: 40 }}
     >
       {/* Header */}
-      <SidebarHeader className="border-b border-guardey-teal/30 p-4">
+      <SidebarHeader className="border-b-2 border-guardey-teal p-6 bg-sage">
         <div className="flex items-center gap-3">
-          <div className="bg-guardey-lime p-2 rounded-lg shadow-sm">
-            <GraduationCap className="h-6 w-6 text-guardey-lime-foreground" />
+          <div className="bg-guardey-lime p-3 rounded-xl shadow-lg">
+            <GraduationCap className="h-7 w-7 text-guardey-lime-foreground" />
           </div>
           {!isCollapsed && (
             <div>
-              <h2 className="text-lg font-semibold text-guardey-dark-foreground">Question Bank</h2>
-              <p className="text-xs text-guardey-dark-foreground/70">Teacher Dashboard</p>
+              <h2 className="text-xl font-bold text-guardey-dark">Question Bank</h2>
+              <p className="text-sm text-sage-foreground">Teacher Dashboard</p>
             </div>
           )}
         </div>
       </SidebarHeader>
 
       {/* Content */}
-      <SidebarContent className="py-4">
+      <SidebarContent className="py-6 bg-sage">
         <SidebarGroup>
-          <SidebarGroupLabel className={`text-guardey-dark-foreground/80 ${isCollapsed ? 'sr-only' : ''}`}>
+          <SidebarGroupLabel className={`text-guardey-dark font-semibold text-base px-4 ${isCollapsed ? 'sr-only' : ''}`}>
             Navigation
           </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+          <SidebarGroupContent className="mt-4">
+            <SidebarMenu className="space-y-2 px-3">
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
@@ -167,34 +166,34 @@ export function AppSidebar() {
                     >
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton
-                          className={`w-full justify-between text-guardey-dark-foreground hover:bg-guardey-lime/20 hover:text-guardey-dark-foreground transition-colors ${
-                            hasActiveSubItem(item.subItems) ? 'bg-guardey-lime/20 text-guardey-dark-foreground' : ''
+                          className={`w-full justify-between text-guardey-dark hover:bg-guardey-lime/30 hover:text-guardey-dark transition-all duration-200 p-3 rounded-xl font-medium shadow-sm ${
+                            hasActiveSubItem(item.subItems) ? 'bg-guardey-lime text-guardey-lime-foreground shadow-lg' : 'bg-sage border border-guardey-teal/20'
                           }`}
                           tooltip={isCollapsed ? item.title : undefined}
                         >
-                          <div className="flex items-center gap-3">
-                            <item.icon className="h-5 w-5 flex-shrink-0" />
-                            {!isCollapsed && <span>{item.title}</span>}
+                          <div className="flex items-center gap-4">
+                            <item.icon className="h-6 w-6 flex-shrink-0" />
+                            {!isCollapsed && <span className="text-base">{item.title}</span>}
                           </div>
                           {!isCollapsed && (
-                            <ChevronDown className={`h-4 w-4 transition-transform ${
+                            <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${
                               shouldBeOpen(item) ? 'rotate-180' : ''
                             }`} />
                           )}
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
                       {!isCollapsed && (
-                        <CollapsibleContent className="transition-all duration-200">
-                          <SidebarMenuSub className="ml-6 mt-1 space-y-1">
+                        <CollapsibleContent className="transition-all duration-300">
+                          <SidebarMenuSub className="ml-8 mt-3 space-y-2">
                             {item.subItems.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
                                   <NavLink
                                     to={subItem.url}
-                                    className={`text-sm transition-colors ${
+                                    className={`text-sm transition-all duration-200 p-3 rounded-lg border ${
                                       isActive(subItem.url)
-                                        ? 'bg-guardey-lime text-guardey-lime-foreground font-medium'
-                                        : 'text-guardey-dark-foreground/80 hover:bg-guardey-lime/20 hover:text-guardey-dark-foreground'
+                                        ? 'bg-guardey-lime text-guardey-lime-foreground font-semibold shadow-md border-guardey-lime'
+                                        : 'text-sage-foreground hover:bg-guardey-lime/20 hover:text-guardey-dark bg-sage border-guardey-teal/20'
                                     }`}
                                   >
                                     {subItem.title}
@@ -210,14 +209,14 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
                       <NavLink
                         to={item.url}
-                        className={`flex items-center gap-3 w-full transition-colors ${
+                        className={`flex items-center gap-4 w-full transition-all duration-200 p-3 rounded-xl font-medium shadow-sm border ${
                           isActive(item.url)
-                            ? 'bg-guardey-lime text-guardey-lime-foreground font-medium'
-                            : 'text-guardey-dark-foreground hover:bg-guardey-lime/20 hover:text-guardey-dark-foreground'
+                            ? 'bg-guardey-lime text-guardey-lime-foreground shadow-lg border-guardey-lime'
+                            : 'text-guardey-dark hover:bg-guardey-lime/30 hover:text-guardey-dark bg-sage border-guardey-teal/20'
                         }`}
                       >
-                        <item.icon className="h-5 w-5 flex-shrink-0" />
-                        {!isCollapsed && <span>{item.title}</span>}
+                        <item.icon className="h-6 w-6 flex-shrink-0" />
+                        {!isCollapsed && <span className="text-base">{item.title}</span>}
                       </NavLink>
                     </SidebarMenuButton>
                   )}
@@ -229,29 +228,29 @@ export function AppSidebar() {
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter className="border-t border-guardey-teal/30 p-4">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
+      <SidebarFooter className="border-t-2 border-guardey-teal p-6 bg-sage">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Button 
               variant="ghost" 
               size="icon" 
-              className="text-guardey-dark-foreground hover:bg-guardey-lime/20 h-8 w-8"
+              className="text-guardey-dark hover:bg-guardey-lime/30 hover:text-guardey-dark h-10 w-10 rounded-xl border border-guardey-teal/20"
             >
-              <Bell className="h-4 w-4" />
+              <Bell className="h-5 w-5" />
             </Button>
             
-            <Avatar className="h-8 w-8">
+            <Avatar className="h-10 w-10 border-2 border-guardey-teal">
               <AvatarImage src="" alt="Profile" />
               <AvatarFallback className="bg-guardey-lime text-guardey-lime-foreground">
-                <User className="h-4 w-4" />
+                <User className="h-5 w-5" />
               </AvatarFallback>
             </Avatar>
           </div>
           
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
-              <div className="text-sm text-guardey-dark-foreground/70">
-                Welcome, <span className="font-medium text-guardey-dark-foreground">Teacher</span>
+              <div className="text-sm text-sage-foreground">
+                Welcome, <span className="font-semibold text-guardey-dark">Teacher</span>
               </div>
             </div>
           )}

@@ -80,6 +80,10 @@ export default {
 					'teal-foreground': 'hsl(var(--guardey-teal-foreground))',
 					purple: 'hsl(var(--guardey-purple))',
 					'purple-foreground': 'hsl(var(--guardey-purple-foreground))'
+				},
+				sage: {
+					DEFAULT: 'hsl(var(--sage-green))',
+					foreground: 'hsl(var(--sage-green-foreground))'
 				}
 			},
 			backgroundImage: {
@@ -87,7 +91,8 @@ export default {
 				'gradient-secondary': 'var(--gradient-secondary)',
 				'gradient-glow': 'var(--gradient-glow)',
 				'gradient-guardey': 'var(--gradient-guardey)',
-				'gradient-guardey-accent': 'var(--gradient-guardey-accent)'
+				'gradient-guardey-accent': 'var(--gradient-guardey-accent)',
+				'gradient-sage': 'var(--gradient-sage)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',

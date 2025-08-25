@@ -53,12 +53,15 @@ All colors MUST be HSL.
     --guardey-teal-foreground: 0 0% 100%;
     --guardey-purple: 260 70% 65%;
     --guardey-purple-foreground: 0 0% 100%;
+    --sage-green: 120 15% 85%;
+    --sage-green-foreground: 120 15% 25%;
 
     --gradient-primary: linear-gradient(135deg, hsl(200 95% 55%), hsl(210 95% 60%));
     --gradient-secondary: linear-gradient(135deg, hsl(210 40% 12%), hsl(220 40% 15%));
     --gradient-glow: linear-gradient(135deg, hsl(200 95% 65%), hsl(210 95% 70%));
     --gradient-guardey: linear-gradient(135deg, hsl(170 30% 15%), hsl(170 40% 20%));
     --gradient-guardey-accent: linear-gradient(135deg, hsl(70 85% 65%), hsl(70 90% 70%));
+    --gradient-sage: linear-gradient(135deg, hsl(120 15% 85%), hsl(120 20% 90%));
     
     --shadow-soft: 0 4px 6px -1px hsl(222 84% 4.9% / 0.1), 0 2px 4px -1px hsl(222 84% 4.9% / 0.06);
     --shadow-medium: 0 10px 15px -3px hsl(222 84% 4.9% / 0.1), 0 4px 6px -2px hsl(222 84% 4.9% / 0.05);
