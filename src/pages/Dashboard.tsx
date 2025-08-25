@@ -100,7 +100,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-gradient-to-br from-background to-guardey-dark/5 min-h-screen p-6">
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
@@ -121,8 +121,8 @@ const Dashboard = () => {
               <div className="flex items-center gap-3">
                 <div className={`p-2 rounded-lg ${
                   action.variant === 'primary' 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'bg-accent text-accent-foreground'
+                    ? 'bg-guardey-lime text-guardey-lime-foreground' 
+                    : 'bg-guardey-teal text-guardey-teal-foreground'
                 }`}>
                   <action.icon className="h-5 w-5" />
                 </div>
@@ -144,13 +144,18 @@ const Dashboard = () => {
               <CardTitle className="text-sm font-medium text-muted-foreground">
                 {stat.title}
               </CardTitle>
-              <stat.icon className={`h-5 w-5 ${stat.color}`} />
+              <stat.icon className={`h-5 w-5 ${
+                stat.color === 'text-primary' ? 'text-guardey-lime' :
+                stat.color === 'text-success' ? 'text-guardey-teal' :
+                stat.color === 'text-warning' ? 'text-guardey-purple' :
+                stat.color
+              }`} />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">{stat.value}</div>
               <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                {stat.trend === 'up' && <TrendingUp className="h-3 w-3 text-success" />}
-                <span className={stat.trend === 'up' ? 'text-success' : 'text-muted-foreground'}>
+                {stat.trend === 'up' && <TrendingUp className="h-3 w-3 text-guardey-teal" />}
+                <span className={stat.trend === 'up' ? 'text-guardey-teal' : 'text-muted-foreground'}>
                   {stat.change} from last month
                 </span>
               </div>
@@ -165,7 +170,7 @@ const Dashboard = () => {
         <Card className="shadow-soft">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5 text-primary" />
+              <Clock className="h-5 w-5 text-guardey-lime" />
               Recent Activity
             </CardTitle>
             <CardDescription>
@@ -177,9 +182,9 @@ const Dashboard = () => {
               <div key={activity.id} className="flex items-center gap-4 p-3 rounded-lg bg-accent/50">
                 <div className="flex-shrink-0">
                   {activity.status === 'completed' ? (
-                    <CheckCircle className="h-5 w-5 text-success" />
+                    <CheckCircle className="h-5 w-5 text-guardey-teal" />
                   ) : (
-                    <AlertCircle className="h-5 w-5 text-warning" />
+                    <AlertCircle className="h-5 w-5 text-guardey-purple" />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -202,7 +207,7 @@ const Dashboard = () => {
         <Card className="shadow-soft">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 text-primary" />
+              <AlertCircle className="h-5 w-5 text-guardey-lime" />
               Quick Tips
             </CardTitle>
             <CardDescription>
@@ -210,19 +215,19 @@ const Dashboard = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="p-4 rounded-lg bg-gradient-secondary border">
+            <div className="p-4 rounded-lg bg-gradient-guardey/10 border border-guardey-teal/20">
               <h4 className="font-medium text-foreground mb-2">💡 Use AI Generation</h4>
               <p className="text-sm text-muted-foreground">
                 Try the AI-powered question generation for faster content creation.
               </p>
             </div>
-            <div className="p-4 rounded-lg bg-gradient-secondary border">
+            <div className="p-4 rounded-lg bg-gradient-guardey/10 border border-guardey-teal/20">
               <h4 className="font-medium text-foreground mb-2">📚 Organize by Chapters</h4>
               <p className="text-sm text-muted-foreground">
                 Group your questions by chapters for better management and reusability.
               </p>
             </div>
-            <div className="p-4 rounded-lg bg-gradient-secondary border">
+            <div className="p-4 rounded-lg bg-gradient-guardey/10 border border-guardey-teal/20">
               <h4 className="font-medium text-foreground mb-2">⚡ Use Templates</h4>
               <p className="text-sm text-muted-foreground">
                 Create question templates to speed up your workflow.

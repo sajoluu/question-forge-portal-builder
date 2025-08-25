@@ -95,12 +95,12 @@ export function TopNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-gradient-secondary shadow-sm backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b border-guardey-dark bg-gradient-guardey shadow-sm backdrop-blur">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="bg-gradient-primary p-1.5 rounded-md shadow-sm">
-            <GraduationCap className="h-5 w-5 text-white" />
+          <div className="bg-guardey-lime p-1.5 rounded-md shadow-sm">
+            <GraduationCap className="h-5 w-5 text-guardey-lime-foreground" />
           </div>
           <div className="hidden sm:block">
             <h2 className="text-base font-semibold text-white">Question Bank</h2>
@@ -117,7 +117,7 @@ export function TopNavigation() {
                   <DropdownMenuTrigger asChild>
                     <Button 
                       variant="ghost" 
-                      className="flex items-center px-2 py-1 text-sm text-white hover:bg-white/10"
+                      className="flex items-center px-2 py-1 text-sm text-guardey-dark-foreground hover:bg-guardey-lime/20"
                     >
                       <item.icon className="h-4 w-4 mr-1.5" />
                       {item.title}
@@ -141,8 +141,8 @@ export function TopNavigation() {
                 <NavLink 
                   to={item.url}
                   className={({ isActive }) => 
-                    `flex items-center px-2 py-1 text-sm text-white hover:bg-white/10 rounded-md ${
-                      isActive ? 'bg-primary shadow-sm' : ''
+                    `flex items-center px-2 py-1 text-sm text-guardey-dark-foreground hover:bg-guardey-lime/20 rounded-md ${
+                      isActive ? 'bg-guardey-lime text-guardey-lime-foreground shadow-sm' : ''
                     }`
                   }
                 >
@@ -156,18 +156,18 @@ export function TopNavigation() {
 
         {/* Right Side */}
         <div className="flex items-center gap-2">
-          <div className="hidden sm:block text-xs text-white/70">
-            Welcome, <span className="font-medium text-white">Teacher</span>
+          <div className="hidden sm:block text-xs text-guardey-dark-foreground/70">
+            Welcome, <span className="font-medium text-guardey-dark-foreground">Teacher</span>
           </div>
           
-          <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 h-8 w-8">
+          <Button variant="ghost" size="icon" className="text-guardey-dark-foreground hover:bg-guardey-lime/20 h-8 w-8">
             <Bell className="h-4 w-4" />
             {/* <span className="absolute -top-1 -right-1 h-3 w-3 bg-primary rounded-full"></span> */}
           </Button>
           
           <Avatar className="h-7 w-7">
             <AvatarImage src="" alt="Profile" />
-            <AvatarFallback className="bg-primary text-primary-foreground">
+            <AvatarFallback className="bg-guardey-lime text-guardey-lime-foreground">
               <User className="h-4 w-4" />
             </AvatarFallback>
           </Avatar>
@@ -176,7 +176,7 @@ export function TopNavigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden text-white hover:bg-white/10 h-8 w-8"
+            className="lg:hidden text-guardey-dark-foreground hover:bg-guardey-lime/20 h-8 w-8"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu className="h-4 w-4" />
@@ -186,13 +186,13 @@ export function TopNavigation() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-secondary">
+        <div className="lg:hidden border-t border-guardey-teal bg-guardey-dark">
           <div className="px-3 py-3 space-y-1">
             {menuItems.map((item) => (
               <div key={item.title}>
                 {item.subItems ? (
                   <div className="space-y-1">
-                    <div className="text-white/70 text-xs font-medium px-2 py-1.5">
+                    <div className="text-guardey-dark-foreground/70 text-xs font-medium px-2 py-1.5">
                       <item.icon className="h-4 w-4 inline mr-1.5" />
                       {item.title}
                     </div>
@@ -200,7 +200,7 @@ export function TopNavigation() {
                       <NavLink
                         key={subItem.title}
                         to={subItem.url}
-                        className="block px-4 py-1.5 text-xs text-white/80 hover:bg-white/10 rounded-md"
+                        className="block px-4 py-1.5 text-xs text-guardey-dark-foreground/80 hover:bg-guardey-lime/20 rounded-md"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {subItem.title}
@@ -213,8 +213,8 @@ export function TopNavigation() {
                     className={({ isActive }) =>
                       `flex items-center px-2 py-1.5 text-xs rounded-md ${
                         isActive 
-                          ? 'bg-primary text-primary-foreground shadow-sm' 
-                          : 'text-white/80 hover:bg-white/10'
+                          ? 'bg-guardey-lime text-guardey-lime-foreground shadow-sm' 
+                          : 'text-guardey-dark-foreground/80 hover:bg-guardey-lime/20'
                       }`
                     }
                     onClick={() => setMobileMenuOpen(false)}

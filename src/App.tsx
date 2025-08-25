@@ -13,6 +13,7 @@ import AddRole from "./pages/roles/AddRole";
 import PermissionMatrix from "./pages/roles/PermissionMatrix";
 import MenuList from "./pages/menus/MenuList";
 import AddMenu from "./pages/menus/AddMenu";
+import { GuardeyShowcase } from "./components/GuardeyShowcase";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/roles/permissions" element={<PermissionMatrix />} />
             <Route path="/menus" element={<MenuList />} />
             <Route path="/menus/add" element={<AddMenu />} />
+            <Route path="/guardey-showcase" element={<GuardeyShowcase />} />
             <Route path="/help-line" element={<Index />} />
             <Route path="/contact" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
