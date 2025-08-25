@@ -21,18 +21,18 @@
     --popover: 0 0% 99%;
     --popover-foreground: 209 100% 9%;
 
-    /* Dark Blue Primary Colors - Updated to #00172D */
-    --primary: 209 100% 9%;
-    --primary-dark: 209 100% 7%;
-    --primary-light: 209 100% 12%;
-    --primary-foreground: 120 15% 98%;
-    --primary-hover: 209 100% 11%;
-    --primary-glow: 209 100% 15%;
+    /* Light Gray Primary Colors - Updated */
+    --primary: 0 0% 88%;
+    --primary-dark: 0 0% 82%;
+    --primary-light: 0 0% 92%;
+    --primary-foreground: 209 100% 9%;
+    --primary-hover: 0 0% 85%;
+    --primary-glow: 0 0% 90%;
 
-    /* Dark Blue Secondary Colors - Updated to #00172D */
-    --secondary: 209 100% 11%;
-    --secondary-foreground: 120 15% 98%;
-    --secondary-hover: 209 100% 13%;
+    /* Light Gray Secondary Colors - Updated */
+    --secondary: 0 0% 85%;
+    --secondary-foreground: 209 100% 9%;
+    --secondary-hover: 0 0% 80%;
 
     /* Light Gray Theme Muted Colors */
     --muted: 0 0% 92%;
@@ -52,7 +52,7 @@
     --border: 0 0% 85%;
     --input: 0 0% 99%;
     --input-border: 0 0% 82%;
-    --ring: 209 100% 15%;
+    --ring: 0 0% 75%;
 
     /* Status Colors for Light Theme */
     --success: 142 70% 35%;
@@ -76,22 +76,22 @@
     --sage-green-foreground: 209 100% 9%;
 
     /* Light Gray Theme Gradient System */
-    --gradient-primary: linear-gradient(135deg, hsl(209 100% 9%) 0%, hsl(209 100% 15%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(209 100% 11%) 0%, hsl(209 100% 17%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 88%) 0%, hsl(0 0% 92%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(0 0% 85%) 0%, hsl(0 0% 90%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(180 70% 35%) 0%, hsl(180 70% 45%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(209 100% 15%) 0%, hsl(180 70% 45%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(0 0% 90%) 0%, hsl(180 70% 45%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(0 0% 97%) 0%, hsl(0 0% 95%) 50%, hsl(0 0% 93%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(0 0% 99%) 0%, hsl(0 0% 97%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.9) 0%, hsla(0, 0%, 97%, 0.8) 100%);
     
-    /* Light Theme Shadow System - Updated to #00172D */
-    --shadow-soft: 0 4px 20px -2px hsl(209 100% 9% / 0.15);
-    --shadow-medium: 0 10px 40px -5px hsl(209 100% 9% / 0.2);
-    --shadow-large: 0 25px 80px -15px hsl(209 100% 9% / 0.25);
-    --shadow-glow: 0 0 40px hsl(209 100% 15% / 0.3);
+    /* Light Gray Theme Shadow System */
+    --shadow-soft: 0 4px 20px -2px hsl(0 0% 70% / 0.15);
+    --shadow-medium: 0 10px 40px -5px hsl(0 0% 70% / 0.2);
+    --shadow-large: 0 25px 80px -15px hsl(0 0% 70% / 0.25);
+    --shadow-glow: 0 0 40px hsl(0 0% 80% / 0.3);
     --shadow-accent-glow: 0 0 40px hsl(180 70% 35% / 0.3);
-    --shadow-glass: 0 8px 32px hsl(209 100% 9% / 0.1);
-    --shadow-float: 0 20px 60px -10px hsl(209 100% 9% / 0.15);
+    --shadow-glass: 0 8px 32px hsl(0 0% 70% / 0.1);
+    --shadow-float: 0 20px 60px -10px hsl(0 0% 70% / 0.15);
 
     /* Modern Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -107,13 +107,13 @@
     --radius-xl: 2rem;
 
     /* Light Gray Theme Sidebar Colors */
-    --sidebar-background: 209 100% 9%;
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-background: 0 0% 90%;
+    --sidebar-foreground: 209 100% 9%;
     --sidebar-primary: 180 70% 35%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 209 100% 11%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 209 100% 7%;
+    --sidebar-accent: 0 0% 85%;
+    --sidebar-accent-foreground: 209 100% 9%;
+    --sidebar-border: 0 0% 82%;
     --sidebar-ring: 180 70% 35%;
   }
 
@@ -155,11 +155,11 @@
     line-height: 1.1;
   }
   h2 { 
-    @apply text-3xl md:text-4xl font-semibold mb-4 text-primary;
+    @apply text-3xl md:text-4xl font-semibold mb-4 text-foreground;
     font-family: 'Poppins', sans-serif;
   }
   h3 { 
-    @apply text-2xl md:text-3xl font-medium mb-3 text-primary;
+    @apply text-2xl md:text-3xl font-medium mb-3 text-foreground;
     font-family: 'Poppins', sans-serif;
   }
   h4 { 
