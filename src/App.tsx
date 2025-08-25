@@ -7,6 +7,7 @@ import { ModernLayout } from "./components/layout/ModernLayout";
 import Dashboard from "./pages/Dashboard";
 import CreateQuestion from "./pages/CreateQuestion";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import RoleList from "./pages/roles/RoleList";
 import AddRole from "./pages/roles/AddRole";
@@ -28,6 +29,7 @@ const App = () => (
         <ModernLayout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/create-question" element={<CreateQuestion />} />
             <Route path="/books" element={<Index />} />
             <Route path="/question-library" element={<Index />} />
