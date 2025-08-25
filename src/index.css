@@ -7,18 +7,18 @@
 
 @layer base {
   :root {
-    /* Modern Background System - Light Sage Green */
-    --background: 120 15% 94%;
-    --background-secondary: 120 15% 92%;
+    /* Modern Background System - Light Gray */
+    --background: 0 0% 97%;
+    --background-secondary: 0 0% 95%;
     --foreground: 209 100% 9%;
 
-    /* Modern Card System with Light Theme */
-    --card: 120 15% 96%;
+    /* Modern Card System with Light Gray Theme */
+    --card: 0 0% 98%;
     --card-foreground: 209 100% 9%;
-    --card-glass: hsla(120, 15%, 100%, 0.8);
-    --card-border: 120 15% 85%;
+    --card-glass: hsla(0, 0%, 100%, 0.8);
+    --card-border: 0 0% 88%;
 
-    --popover: 120 15% 98%;
+    --popover: 0 0% 99%;
     --popover-foreground: 209 100% 9%;
 
     /* Dark Blue Primary Colors - Updated to #00172D */
@@ -34,8 +34,8 @@
     --secondary-foreground: 120 15% 98%;
     --secondary-hover: 209 100% 13%;
 
-    /* Light Theme Muted Colors */
-    --muted: 120 15% 88%;
+    /* Light Gray Theme Muted Colors */
+    --muted: 0 0% 92%;
     --muted-foreground: 209 80% 20%;
 
     /* Accent Colors - Complementary Teal */
@@ -48,10 +48,10 @@
     --destructive: 0 85% 45%;
     --destructive-foreground: 120 15% 98%;
 
-    /* Light Theme Borders and Inputs */
-    --border: 120 15% 80%;
-    --input: 120 15% 98%;
-    --input-border: 120 15% 75%;
+    /* Light Gray Theme Borders and Inputs */
+    --border: 0 0% 85%;
+    --input: 0 0% 99%;
+    --input-border: 0 0% 82%;
     --ring: 209 100% 15%;
 
     /* Status Colors for Light Theme */
@@ -63,26 +63,26 @@
     --warning-foreground: 120 15% 98%;
     --warning-glow: 38 85% 55%;
 
-    /* Guardey Brand Colors */
+    /* Guardey Brand Colors with Updated Text Colors */
     --guardey-dark: 170 30% 15%;
     --guardey-dark-foreground: 0 0% 100%;
     --guardey-lime: 70 85% 65%;
-    --guardey-lime-foreground: 70 85% 15%;
+    --guardey-lime-foreground: 209 100% 9%;
     --guardey-teal: 170 40% 45%;
     --guardey-teal-foreground: 0 0% 100%;
     --guardey-purple: 260 70% 65%;
     --guardey-purple-foreground: 0 0% 100%;
     --sage-green: 120 15% 85%;
-    --sage-green-foreground: 120 15% 25%;
+    --sage-green-foreground: 209 100% 9%;
 
-    /* Light Theme Gradient System - Updated to #00172D */
+    /* Light Gray Theme Gradient System */
     --gradient-primary: linear-gradient(135deg, hsl(209 100% 9%) 0%, hsl(209 100% 15%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(209 100% 11%) 0%, hsl(209 100% 17%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(180 70% 35%) 0%, hsl(180 70% 45%) 100%);
     --gradient-glow: linear-gradient(135deg, hsl(209 100% 15%) 0%, hsl(180 70% 45%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(120 15% 94%) 0%, hsl(120 20% 90%) 50%, hsl(180 20% 85%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(120 15% 98%) 0%, hsl(120 15% 95%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsla(120, 15%, 100%, 0.9) 0%, hsla(120, 15%, 95%, 0.8) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 97%) 0%, hsl(0 0% 95%) 50%, hsl(0 0% 93%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 99%) 0%, hsl(0 0% 97%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.9) 0%, hsla(0, 0%, 97%, 0.8) 100%);
     
     /* Light Theme Shadow System - Updated to #00172D */
     --shadow-soft: 0 4px 20px -2px hsl(209 100% 9% / 0.15);
@@ -106,13 +106,13 @@
     --radius-lg: 1.5rem;
     --radius-xl: 2rem;
 
-    /* Light Theme Sidebar Colors - Updated to #00172D */
+    /* Light Gray Theme Sidebar Colors */
     --sidebar-background: 209 100% 9%;
-    --sidebar-foreground: 120 15% 95%;
+    --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 180 70% 35%;
-    --sidebar-primary-foreground: 120 15% 98%;
+    --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 209 100% 11%;
-    --sidebar-accent-foreground: 120 15% 90%;
+    --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 209 100% 7%;
     --sidebar-ring: 180 70% 35%;
   }
