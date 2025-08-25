@@ -11,8 +11,8 @@ export function ModernLayout({ children }: ModernLayoutProps) {
       <div className="min-h-screen flex w-full bg-gradient-hero relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent/5 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-10 left-10 w-64 h-64 bg-primary/8 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent/10 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}}></div>
         </div>
         
         <AppSidebar />
@@ -38,8 +38,8 @@ export function ModernLayout({ children }: ModernLayoutProps) {
           <main className="flex-1 p-6 md:p-8 bg-gradient-hero overflow-auto relative">
             {/* Background decorations */}
             <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-float"></div>
-              <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-xl animate-float" style={{animationDelay: '3s'}}></div>
+              <div className="absolute top-20 right-20 w-32 h-32 bg-primary/8 rounded-full blur-2xl animate-float"></div>
+              <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/12 rounded-full blur-xl animate-float" style={{animationDelay: '3s'}}></div>
             </div>
             
             <div className="max-w-7xl mx-auto relative z-10">

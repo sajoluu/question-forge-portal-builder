@@ -5,16 +5,16 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-hero relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"></div>
-        <div className="absolute top-60 right-20 w-24 h-24 bg-accent/20 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-40 left-1/3 w-40 h-40 bg-primary/10 rounded-full blur-2xl animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-60 right-20 w-24 h-24 bg-accent/15 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-40 left-1/3 w-40 h-40 bg-primary/8 rounded-full blur-2xl animate-float" style={{animationDelay: '4s'}}></div>
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen p-8">
         <div className="text-center max-w-4xl mx-auto">
           {/* Main Content */}
           <div className="glass-card p-12 mb-8 animate-slide-up">
-            <div className="bg-gradient-primary p-6 rounded-2xl w-24 h-24 mx-auto mb-8 flex items-center justify-center animate-glow">
+            <div className="bg-gradient-primary p-6 rounded-2xl w-24 h-24 mx-auto mb-8 flex items-center justify-center animate-glow shadow-glow">
               <span className="text-4xl">🚀</span>
             </div>
             
@@ -31,7 +31,7 @@ const Index = () => {
               <button className="bg-gradient-primary text-primary-foreground px-8 py-4 rounded-2xl font-semibold text-lg shadow-glow hover:shadow-accent-glow transform hover:scale-105 hover:-translate-y-1 transition-all duration-300">
                 Get Started
               </button>
-              <button className="glass border border-white/20 text-foreground px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition-all duration-300">
+              <button className="glass border border-primary/30 text-primary px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-primary/10 transition-all duration-300">
                 Learn More
               </button>
             </div>
@@ -80,7 +80,7 @@ const Index = () => {
               <button className="bg-gradient-primary text-primary-foreground px-6 py-3 rounded-xl font-semibold shadow-glow hover:shadow-accent-glow transform hover:scale-105 transition-all duration-300">
                 View Components
               </button>
-              <button className="glass border border-white/20 text-foreground px-6 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
+              <button className="glass border border-primary/30 text-primary px-6 py-3 rounded-xl font-semibold hover:bg-primary/10 transition-all duration-300">
                 Documentation
               </button>
             </div>
