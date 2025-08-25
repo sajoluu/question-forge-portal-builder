@@ -115,29 +115,29 @@ const CreateQuestion = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-gradient-to-br from-guardey-dark/5 to-guardey-teal/10 p-6 rounded-lg min-h-screen">
       {/* Header */}
       <div className="space-y-4">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 text-sm text-guardey-teal">
           <span>Dashboard</span>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground font-medium">Create Question</span>
+          <span className="text-guardey-dark font-medium">Create Question</span>
         </div>
         
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Create Question Set</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-3xl font-bold text-guardey-dark">Create Question Set</h1>
+            <p className="text-guardey-teal">
               Build comprehensive question sets with AI assistance and advanced filtering
             </p>
           </div>
           
           <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="flex items-center gap-2 btn-glow">
+            <Badge variant="secondary" className="flex items-center gap-2 bg-guardey-lime/20 text-guardey-lime border-guardey-lime/30 btn-glow">
               <Sparkles className="h-3 w-3" />
               AI Powered
             </Badge>
-            <Badge variant="outline" className="flex items-center gap-2">
+            <Badge variant="outline" className="flex items-center gap-2 border-guardey-teal text-guardey-teal">
               <BookOpen className="h-3 w-3" />
               Multi-Format
             </Badge>
@@ -146,11 +146,11 @@ const CreateQuestion = () => {
       </div>
 
       {/* Progress Indicator */}
-      <Card className="shadow-soft">
+      <Card className="shadow-soft border-guardey-teal/20">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-lg">Progress</CardTitle>
-            <span className="text-sm text-muted-foreground">
+            <CardTitle className="text-lg text-guardey-dark">Progress</CardTitle>
+            <span className="text-sm text-guardey-teal">
               Step {currentStep} of {steps.length}
             </span>
           </div>
@@ -169,21 +169,21 @@ const CreateQuestion = () => {
                 <div 
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium mb-2 transition-all ${
                     step.id === currentStep 
-                      ? 'bg-primary text-primary-foreground shadow-glow' 
+                      ? 'bg-guardey-lime text-guardey-lime-foreground shadow-glow' 
                       : step.id < currentStep 
-                        ? 'bg-success text-success-foreground hover:shadow-glow'
-                        : 'bg-muted text-muted-foreground hover:bg-accent'
+                        ? 'bg-guardey-teal text-guardey-teal-foreground hover:shadow-glow'
+                        : 'bg-muted text-muted-foreground hover:bg-guardey-lime/20'
                   }`}
                 >
                   {step.id}
                 </div>
                 <div className="space-y-1">
                   <h4 className={`text-sm font-medium ${
-                    step.id <= currentStep ? 'text-foreground' : 'text-muted-foreground'
+                    step.id <= currentStep ? 'text-guardey-dark' : 'text-muted-foreground'
                   }`}>
                     {step.name}
                   </h4>
-                  <p className="text-xs text-muted-foreground hidden sm:block">
+                  <p className="text-xs text-guardey-teal hidden sm:block">
                     {step.description}
                   </p>
                 </div>
@@ -204,7 +204,7 @@ const CreateQuestion = () => {
           <Button 
             variant="outline" 
             onClick={prevStep}
-            className="flex items-center gap-2 btn-glow"
+            className="flex items-center gap-2 border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white btn-glow"
           >
             <ArrowLeft className="h-4 w-4" />
             Previous Step
@@ -213,7 +213,7 @@ const CreateQuestion = () => {
           {currentStep < steps.length && (
             <Button 
               onClick={nextStep}
-              className="flex items-center gap-2 btn-glow"
+              className="flex items-center gap-2 bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 btn-glow"
             >
               Next Step
               <ArrowRight className="h-4 w-4" />

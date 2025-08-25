@@ -51,17 +51,17 @@ export default function MenuList() {
   const actionKeys: (keyof ActionSet)[] = ["view","create","edit","delete","export"];
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in bg-gradient-to-br from-guardey-dark/5 to-guardey-teal/5 p-6 rounded-lg">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Menu Management</h1>
+        <h1 className="text-2xl font-bold text-guardey-dark">Menu Management</h1>
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-guardey-teal" />
             <Input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Search menus or paths" className="pl-8 w-64" />
           </div>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="shadow-glow"><Plus className="h-4 w-4 mr-2" />Add Menu</Button>
+              <Button className="bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 shadow-glow"><Plus className="h-4 w-4 mr-2" />Add Menu</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader><DialogTitle>Create Menu</DialogTitle></DialogHeader>
@@ -71,9 +71,9 @@ export default function MenuList() {
         </div>
       </div>
 
-      <Card>
+      <Card className="border-guardey-teal/20 shadow-lg">
         <CardHeader>
-          <CardTitle>Menu List</CardTitle>
+          <CardTitle className="text-guardey-dark">Menu List</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -193,21 +193,21 @@ function MenuForm({ defaultValue, onSubmit }: {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Menu Name</label>
+          <label className="block text-sm font-medium mb-1 text-guardey-dark">Menu Name</label>
           <Input value={name} onChange={(e)=>setName(e.target.value)} required />
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Icon (optional)</label>
+          <label className="block text-sm font-medium mb-1 text-guardey-dark">Icon (optional)</label>
           <Input value={icon} onChange={(e)=>setIcon(e.target.value)} placeholder="e.g., LayoutDashboard" />
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-1">Path</label>
+          <label className="block text-sm font-medium mb-1 text-guardey-dark">Path</label>
           <Input value={path} onChange={(e)=>setPath(e.target.value)} placeholder="/reports" required />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Actions</label>
+        <label className="block text-sm font-medium mb-2 text-guardey-dark">Actions</label>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {actionKeys.map(k=> (
             <label key={k} className="inline-flex items-center gap-2 capitalize">
@@ -219,12 +219,12 @@ function MenuForm({ defaultValue, onSubmit }: {
 
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <h4 className="font-medium">Submenus</h4>
-          <Button type="button" variant="outline" onClick={addSub}><Plus className="h-4 w-4 mr-2"/> Add Submenu</Button>
+          <h4 className="font-medium text-guardey-dark">Submenus</h4>
+          <Button type="button" variant="outline" onClick={addSub} className="border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white"><Plus className="h-4 w-4 mr-2"/> Add Submenu</Button>
         </div>
         <div className="space-y-4">
           {submenus.map((sm, idx)=> (
-            <div key={sm.id} className="rounded-lg border p-3">
+            <div key={sm.id} className="rounded-lg border border-guardey-teal/30 p-3 bg-guardey-lime/5">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <Input value={sm.name} onChange={(e)=> setSubmenus(s=> s.map((x,i)=> i===idx ? { ...x, name: e.target.value } : x))} placeholder="Submenu name" />
                 <Input value={sm.path} onChange={(e)=> setSubmenus(s=> s.map((x,i)=> i===idx ? { ...x, path: e.target.value } : x))} placeholder="/path" />
@@ -243,8 +243,8 @@ function MenuForm({ defaultValue, onSubmit }: {
       </div>
 
       <div className="flex justify-end gap-2">
-        <Button type="button" variant="outline">Cancel</Button>
-        <Button type="submit" className="shadow-glow">Save</Button>
+        <Button type="button" variant="outline" className="border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white">Cancel</Button>
+        <Button type="submit" className="bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 shadow-glow">Save</Button>
       </div>
     </form>
   );

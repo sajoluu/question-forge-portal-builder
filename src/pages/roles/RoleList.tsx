@@ -33,12 +33,12 @@ export default function RoleList() {
   );
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in bg-gradient-to-br from-guardey-dark/5 to-guardey-teal/5 p-6 rounded-lg">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Role Management</h1>
+        <h1 className="text-2xl font-bold text-guardey-dark">Role Management</h1>
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-guardey-teal" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -48,7 +48,7 @@ export default function RoleList() {
           </div>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="shadow-glow"><Plus className="h-4 w-4 mr-2" />Add Role</Button>
+              <Button className="bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 shadow-glow"><Plus className="h-4 w-4 mr-2" />Add Role</Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
@@ -60,9 +60,9 @@ export default function RoleList() {
         </div>
       </div>
 
-      <Card>
+      <Card className="border-guardey-teal/20 shadow-lg">
         <CardHeader>
-          <CardTitle>Role List</CardTitle>
+          <CardTitle className="text-guardey-dark">Role List</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -82,7 +82,12 @@ export default function RoleList() {
                   <TableCell>{role.description}</TableCell>
                   <TableCell>{role.accessLevel}</TableCell>
                   <TableCell>
-                    <span className={`inline-flex h-5 w-5 rounded-full bg-${role.color}-500`} aria-hidden />
+                    <span className={`inline-flex h-5 w-5 rounded-full ${
+                      role.color === 'indigo' ? 'bg-guardey-purple' :
+                      role.color === 'cyan' ? 'bg-guardey-teal' :
+                      role.color === 'emerald' ? 'bg-guardey-lime' :
+                      'bg-guardey-dark'
+                    }`} aria-hidden />
                     <span className="sr-only">{role.color}</span>
                   </TableCell>
                   <TableCell className="text-right">
@@ -164,37 +169,42 @@ function AddOrEditRoleForm({ defaultValue, onSubmit }: {
       }}
     >
       <div>
-        <label className="block text-sm font-medium mb-1">Role Name</label>
+        <label className="block text-sm font-medium mb-1 text-guardey-dark">Role Name</label>
         <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Client Admin" required />
       </div>
       <div>
-        <label className="block text-sm font-medium mb-1">Access Level</label>
+        <label className="block text-sm font-medium mb-1 text-guardey-dark">Access Level</label>
         <Input type="number" min={1} max={6} value={accessLevel} onChange={(e) => setAccessLevel(Number(e.target.value))} required />
       </div>
       <div className="md:col-span-2">
-        <label className="block text-sm font-medium mb-1">Description</label>
+        <label className="block text-sm font-medium mb-1 text-guardey-dark">Description</label>
         <Input value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Responsibilities and scope" />
       </div>
       <div className="md:col-span-2">
-        <label className="block text-sm font-medium mb-1">Color Theme</label>
+        <label className="block text-sm font-medium mb-1 text-guardey-dark">Color Theme</label>
         <div className="flex gap-3 flex-wrap">
-          {['indigo','cyan','emerald','rose','amber','violet'].map((c) => (
+          {['guardey-dark','guardey-lime','guardey-teal','guardey-purple','primary','secondary'].map((c) => (
             <button
               type="button"
               key={c}
               onClick={() => setColor(c)}
-              className={`h-9 px-4 rounded-md border hover-scale ${color===c ? 'ring-2 ring-primary' : ''}`}
-              style={{ background: `hsl(var(--primary) / 0.05)` }}
+              className={`h-9 px-4 rounded-md border border-guardey-teal/30 hover:border-guardey-lime transition-colors ${color===c ? 'ring-2 ring-guardey-lime bg-guardey-lime/10' : 'bg-white hover:bg-guardey-lime/5'}`}
             >
-              <span className={`inline-block h-4 w-4 rounded-full mr-2 bg-${c}-500`} />
-              {c}
+              <span className={`inline-block h-4 w-4 rounded-full mr-2 ${
+                c === 'guardey-dark' ? 'bg-guardey-dark' :
+                c === 'guardey-lime' ? 'bg-guardey-lime' :
+                c === 'guardey-teal' ? 'bg-guardey-teal' :
+                c === 'guardey-purple' ? 'bg-guardey-purple' :
+                c === 'primary' ? 'bg-primary' : 'bg-secondary'
+              }`} />
+              <span className="text-guardey-dark capitalize">{c.replace('guardey-', '')}</span>
             </button>
           ))}
         </div>
       </div>
       <div className="md:col-span-2 flex justify-end gap-2">
-        <Button variant="outline" type="button">Cancel</Button>
-        <Button type="submit" className="shadow-glow">{defaultValue ? 'Save' : 'Create Role'}</Button>
+        <Button variant="outline" type="button" className="border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white">Cancel</Button>
+        <Button type="submit" className="bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 shadow-glow">{defaultValue ? 'Save' : 'Create Role'}</Button>
       </div>
     </form>
   );

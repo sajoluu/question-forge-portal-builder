@@ -18,6 +18,10 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:shadow-glow",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        "guardey-primary": "bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 hover:shadow-glow transform hover:scale-105",
+        "guardey-secondary": "bg-guardey-teal text-guardey-teal-foreground hover:bg-guardey-teal/90 hover:shadow-glow",
+        "guardey-outline": "border border-guardey-teal text-guardey-teal bg-white hover:bg-guardey-teal hover:text-guardey-teal-foreground hover:shadow-soft",
+        "guardey-ghost": "text-guardey-dark hover:bg-guardey-lime/20 hover:text-guardey-dark",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -38,18 +38,18 @@ export default function PermissionMatrix() {
   const allChecked = useMemo(() => JSON.stringify(perms), [perms]);
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-6 animate-fade-in bg-gradient-to-br from-guardey-dark/5 to-guardey-teal/5 p-6 rounded-lg">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Role Permission Matrix</h1>
+        <h1 className="text-2xl font-bold text-guardey-dark">Role Permission Matrix</h1>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={() => setPerms(seed)}>Reset</Button>
-          <Button className="shadow-glow" onClick={() => toast.success("Permissions saved successfully")}>Save</Button>
+          <Button variant="outline" onClick={() => setPerms(seed)} className="border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white">Reset</Button>
+          <Button className="bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 shadow-glow" onClick={() => toast.success("Permissions saved successfully")}>Save</Button>
         </div>
       </div>
 
-      <Card>
+      <Card className="border-guardey-teal/20 shadow-lg">
         <CardHeader>
-          <CardTitle>Menus and Submenus</CardTitle>
+          <CardTitle className="text-guardey-dark">Menus and Submenus</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -90,7 +90,7 @@ export default function PermissionMatrix() {
         </CardContent>
       </Card>
 
-      <p className="text-xs text-muted-foreground">Checksum: {allChecked.length}</p>
+      <p className="text-xs text-guardey-teal">Checksum: {allChecked.length}</p>
     </div>
   );
 }
