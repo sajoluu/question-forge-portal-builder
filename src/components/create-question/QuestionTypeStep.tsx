@@ -20,10 +20,10 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
     const newErrors: { [key: string]: string } = {};
 
     if (!formData.questionType) {
-      newErrors.questionType = "Please select a valid question type.";
+      newErrors.questionType = "অনুগ্রহ করে একটি বৈধ প্রশ্নের ধরন নির্বাচন করুন।";
     }
     if (!formData.method) {
-      newErrors.method = "Please select a valid method.";
+      newErrors.method = "অনুগ্রহ করে একটি বৈধ পদ্ধতি নির্বাচন করুন।";
     }
 
     setErrors(newErrors);
@@ -39,16 +39,16 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <GraduationCap className="h-5 w-5 text-primary" />
-            Question Set Configuration
+            প্রশ্ন সেট কনফিগারেশন
           </CardTitle>
           <CardDescription>
-            Choose the type of questions and method for your examination
+            আপনার পরীক্ষার জন্য প্রশ্নের ধরন এবং পদ্ধতি নির্বাচন করুন
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-8">
           {/* Question Type Selection */}
           <div className="space-y-4">
-            <Label className="text-base font-semibold">Question Type *</Label>
+            <Label className="text-base font-semibold">প্রশ্নের ধরন *</Label>
             <RadioGroup
               value={formData.questionType}
               onValueChange={(value: "regular" | "ai-generated") => {
@@ -75,9 +75,9 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
                 >
                   <FileText className="h-12 w-12 mb-3 text-primary" />
                   <div className="text-center">
-                    <div className="text-lg font-semibold">Regular</div>
+                    <div className="text-lg font-semibold">নিয়মিত</div>
                     <div className="text-sm text-muted-foreground">
-                      Traditional question selection from database
+                      ডাটাবেস থেকে ঐতিহ্যগত প্রশ্ন নির্বাচন
                     </div>
                   </div>
                 </Label>
@@ -99,9 +99,9 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
                 >
                   <Bot className="h-12 w-12 mb-3 text-primary" />
                   <div className="text-center">
-                    <div className="text-lg font-semibold">AI Generated</div>
+                    <div className="text-lg font-semibold">এআই উৎপন্ন</div>
                     <div className="text-sm text-muted-foreground">
-                      AI-powered intelligent question creation
+                      এআই-চালিত বুদ্ধিমান প্রশ্ন তৈরি
                     </div>
                   </div>
                 </Label>
@@ -117,7 +117,7 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
 
           {/* Method Selection */}
           <div className="space-y-4">
-            <Label className="text-base font-semibold">Method *</Label>
+            <Label className="text-base font-semibold">পদ্ধতি *</Label>
             <RadioGroup
               value={formData.method}
               onValueChange={(value: "board-book" | "guide-book") => {
@@ -144,9 +144,9 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
                 >
                   <BookOpen className="h-12 w-12 mb-3 text-primary" />
                   <div className="text-center">
-                    <div className="text-lg font-semibold">Board Book</div>
+                    <div className="text-lg font-semibold">বোর্ড বই</div>
                     <div className="text-sm text-muted-foreground">
-                      Questions from official board textbooks
+                      অফিসিয়াল বোর্ড পাঠ্যবই থেকে প্রশ্ন
                     </div>
                   </div>
                 </Label>
@@ -168,9 +168,9 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
                 >
                   <GraduationCap className="h-12 w-12 mb-3 text-primary" />
                   <div className="text-center">
-                    <div className="text-lg font-semibold">Guide Book</div>
+                    <div className="text-lg font-semibold">গাইড বই</div>
                     <div className="text-sm text-muted-foreground">
-                      Questions from supplementary guide books
+                      সহায়ক গাইড বই থেকে প্রশ্ন
                     </div>
                   </div>
                 </Label>
@@ -191,7 +191,7 @@ export function QuestionTypeStep({ formData, updateFormData, onNext }: QuestionT
               size="lg"
               className="btn-glow"
             >
-              Continue to Setup
+              সেটআপে চালিয়ে যান
             </Button>
           </div>
         </CardContent>

@@ -126,10 +126,10 @@ export function PreviewStep({ formData, updateFormData, onNext }: PreviewStepPro
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Eye className="h-5 w-5 text-primary" />
-              Question Set Preview
+              প্রশ্ন সেট প্রিভিউ
             </CardTitle>
             <CardDescription>
-              Preview your complete question set with current formatting
+              বর্তমান ফরম্যাটিং সহ আপনার সম্পূর্ণ প্রশ্ন সেট প্রিভিউ করুন
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -467,7 +467,7 @@ export function PreviewStep({ formData, updateFormData, onNext }: PreviewStepPro
             size="lg"
             className="w-full btn-glow mt-4"
           >
-            Finalize & Export
+            চূড়ান্ত ও রপ্তানি
           </Button>
         </div>
       </div>

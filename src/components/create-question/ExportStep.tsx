@@ -21,8 +21,8 @@ export function ExportStep({ formData }: ExportStepProps) {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     toast({
-      title: "Export Successful!",
-      description: `Question set exported as ${format.toUpperCase()} format.`,
+      title: "রপ্তানি সফল!",
+      description: `প্রশ্ন সেট ${format.toUpperCase()} ফরম্যাটে রপ্তানি করা হয়েছে।`,
       variant: "default",
     });
     
@@ -36,8 +36,8 @@ export function ExportStep({ formData }: ExportStepProps) {
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     toast({
-      title: "Question Set Saved!",
-      description: "Your question set has been saved successfully.",
+      title: "প্রশ্ন সেট সংরক্ষিত!",
+      description: "আপনার প্রশ্ন সেট সফলভাবে সংরক্ষণ করা হয়েছে।",
       variant: "default",
     });
     
@@ -45,10 +45,10 @@ export function ExportStep({ formData }: ExportStepProps) {
   };
 
   const exportOptions = [
-    { format: "A4", icon: FileText, description: "Standard A4 paper size" },
-    { format: "A5", icon: FileText, description: "Compact A5 paper size" },
-    { format: "Legal", icon: FileText, description: "Legal paper size" },
-    { format: "Letter", icon: FileText, description: "US Letter paper size" }
+    { format: "A4", icon: FileText, description: "প্রমাণ A4 কাগজের আকার" },
+    { format: "A5", icon: FileText, description: "কম্প্যাক্ট A5 কাগজের আকার" },
+    { format: "Legal", icon: FileText, description: "লিগাল কাগজের আকার" },
+    { format: "Letter", icon: FileText, description: "US লেটার কাগজের আকার" }
   ];
 
   return (
@@ -61,9 +61,9 @@ export function ExportStep({ formData }: ExportStepProps) {
               <Trophy className="h-12 w-12" />
             </div>
           </div>
-          <CardTitle className="text-2xl">Question Set Created Successfully!</CardTitle>
+          <CardTitle className="text-2xl">প্রশ্ন সেট সফলভাবে তৈরি হয়েছে!</CardTitle>
           <CardDescription className="text-white/80">
-            Your question set is ready for export and distribution
+            আপনার প্রশ্ন সেট রপ্তানি এবং বিতরণের জন্য প্রস্তুত
           </CardDescription>
         </CardHeader>
       </Card>
@@ -73,59 +73,59 @@ export function ExportStep({ formData }: ExportStepProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-success" />
-            Final Question Set Summary
+            চূড়ান্ত প্রশ্ন সেট সারসংক্ষেপ
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid gap-4 md:grid-cols-3">
             <div className="text-center p-4 bg-accent/50 rounded-lg">
               <div className="text-2xl font-bold text-primary">{formData.selectedQuestions.length}</div>
-              <div className="text-sm text-muted-foreground">Questions Selected</div>
+              <div className="text-sm text-muted-foreground">নির্বাচিত প্রশ্ন</div>
             </div>
             <div className="text-center p-4 bg-accent/50 rounded-lg">
               <div className="text-2xl font-bold text-primary">{formData.totalQuestions}</div>
-              <div className="text-sm text-muted-foreground">Total Questions</div>
+              <div className="text-sm text-muted-foreground">মোট প্রশ্ন</div>
             </div>
             <div className="text-center p-4 bg-accent/50 rounded-lg">
               <div className="text-2xl font-bold text-primary">
                 {formData.totalQuestions * (formData.questionTypeDetail === 'mcq' ? 1 : 5)}
               </div>
-              <div className="text-sm text-muted-foreground">Total Marks</div>
+              <div className="text-sm text-muted-foreground">মোট নম্বর</div>
             </div>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-3">
-              <h4 className="font-semibold">Exam Information</h4>
+              <h4 className="font-semibold">পরীক্ষার তথ্য</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span>Exam Name:</span>
+                  <span>পরীক্ষার নাম:</span>
                   <Badge variant="outline">{formData.examName}</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span>Subject:</span>
+                  <span>বিষয়:</span>
                   <Badge variant="outline">{formData.subject}</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span>Chapter:</span>
+                  <span>অধ্যায়:</span>
                   <Badge variant="outline">{formData.chapter}</Badge>
                 </div>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h4 className="font-semibold">Academic Details</h4>
+              <h4 className="font-semibold">একাডেমিক বিবরণ</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span>Class:</span>
+                  <span>ক্লাস:</span>
                   <Badge variant="secondary">{formData.class}</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span>Group:</span>
+                  <span>গ্রুপ:</span>
                   <Badge variant="secondary">{formData.group}</Badge>
                 </div>
                 <div className="flex justify-between">
-                  <span>Type:</span>
+                  <span>ধরন:</span>
                   <Badge variant="secondary">{formData.questionTypeDetail?.toUpperCase()}</Badge>
                 </div>
               </div>
@@ -139,10 +139,10 @@ export function ExportStep({ formData }: ExportStepProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Download className="h-5 w-5 text-primary" />
-            Export & Print Options
+            রপ্তানি ও প্রিন্ট অপশন
           </CardTitle>
           <CardDescription>
-            Choose your preferred format for exporting the question set
+            প্রশ্ন সেট রপ্তানি করার জন্য আপনার পছন্দের ফরম্যাট নির্বাচন করুন
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -174,7 +174,7 @@ export function ExportStep({ formData }: ExportStepProps) {
               className="btn-glow"
             >
               <FileText className="h-4 w-4 mr-2" />
-              {isExporting ? "Saving..." : "Save Question Set"}
+              {isExporting ? "সংরক্ষণ করা হচ্ছে..." : "প্রশ্ন সেট সংরক্ষণ করুন"}
             </Button>
 
             <Button 
@@ -184,7 +184,7 @@ export function ExportStep({ formData }: ExportStepProps) {
               className="btn-glow"
             >
               <Download className="h-4 w-4 mr-2" />
-              {isExporting ? "Exporting..." : "Download PDF"}
+              {isExporting ? "রপ্তানি করা হচ্ছে..." : "পিডিএফ ডাউনলোড করুন"}
             </Button>
 
             <Button 
@@ -194,21 +194,21 @@ export function ExportStep({ formData }: ExportStepProps) {
               className="btn-glow"
             >
               <Printer className="h-4 w-4 mr-2" />
-              Print Now
+              এখনই প্রিন্ট করুন
             </Button>
           </div>
 
           {/* Share Options */}
           <div className="border-t pt-6">
-            <h4 className="font-semibold mb-4 text-center">Share Question Set</h4>
+            <h4 className="font-semibold mb-4 text-center">প্রশ্ন সেট শেয়ার করুন</h4>
             <div className="flex gap-2 justify-center">
               <Button variant="outline" size="sm" className="btn-glow">
                 <Share2 className="h-4 w-4 mr-1" />
-                Share Link
+                লিংক শেয়ার করুন
               </Button>
               <Button variant="outline" size="sm" className="btn-glow">
                 <Mail className="h-4 w-4 mr-1" />
-                Email
+                ইমেইল
               </Button>
             </div>
           </div>

@@ -37,9 +37,9 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
               <CheckCircle className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-success">Question Set Created Successfully!</h3>
+              <h3 className="text-lg font-semibold text-success">প্রশ্ন সেট সফলভাবে তৈরি হয়েছে!</h3>
               <p className="text-sm text-muted-foreground">
-                Your question set configuration has been prepared. Review the details below.
+                আপনার প্রশ্ন সেট কনফিগারেশন প্রস্তুত করা হয়েছে। নিচের বিবরণ পর্যালোচনা করুন।
               </p>
             </div>
           </div>
@@ -53,30 +53,30 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-primary" />
-              Exam Information
+              পরীক্ষার তথ্য
             </CardTitle>
-            <CardDescription>Basic details of your question set</CardDescription>
+            <CardDescription>আপনার প্রশ্ন সেটের মৌলিক বিবরণ</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3">
               <div className="flex justify-between items-center py-2 border-b border-border">
-                <span className="text-sm text-muted-foreground">School Name</span>
+                <span className="text-sm text-muted-foreground">স্কুলের নাম</span>
                 <span className="font-medium">{confirmationData.schoolName}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-border">
-                <span className="text-sm text-muted-foreground">Exam Name</span>
+                <span className="text-sm text-muted-foreground">পরীক্ষার নাম</span>
                 <span className="font-medium">{confirmationData.examDetails.name}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-border">
-                <span className="text-sm text-muted-foreground">Class & Group</span>
+                <span className="text-sm text-muted-foreground">ক্লাস ও গ্রুপ</span>
                 <span className="font-medium">{confirmationData.examDetails.class} - {confirmationData.examDetails.group}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-border">
-                <span className="text-sm text-muted-foreground">Subject</span>
+                <span className="text-sm text-muted-foreground">বিষয়</span>
                 <span className="font-medium">{confirmationData.examDetails.subject}</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-sm text-muted-foreground">Chapter</span>
+                <span className="text-sm text-muted-foreground">অধ্যায়</span>
                 <span className="font-medium">{confirmationData.examDetails.chapter}</span>
               </div>
             </div>
@@ -88,16 +88,16 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Target className="h-5 w-5 text-primary" />
-              Assessment Details
+              মূল্যায়নের বিবরণ
             </CardTitle>
-            <CardDescription>Time allocation and marking scheme</CardDescription>
+            <CardDescription>সময় বরাদ্দ এবং নম্বর বিন্যাস</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-4">
               <div className="p-4 bg-accent/50 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium">Time Allocation</span>
+                  <span className="text-sm font-medium">সময় বরাদ্দ</span>
                 </div>
                 <span className="text-2xl font-bold text-primary">{confirmationData.timeAllocation}</span>
               </div>
@@ -105,23 +105,23 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
               <div className="p-4 bg-accent/50 rounded-lg">
                 <div className="flex items-center gap-2 mb-2">
                   <FileText className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium">Total Marks</span>
+                  <span className="text-sm font-medium">মোট নম্বর</span>
                 </div>
                 <span className="text-2xl font-bold text-primary">{confirmationData.totalMarks}</span>
               </div>
 
               <div className="space-y-2">
-                <h4 className="text-sm font-medium text-foreground">Question Breakdown</h4>
+                <h4 className="text-sm font-medium text-foreground">প্রশ্ন বিভাজন</h4>
                 <div className="space-y-2">
                   {confirmationData.questionBreakdown.mcq > 0 && (
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
-                      <span className="text-sm">MCQ Questions</span>
+                      <span className="text-sm">MCQ প্রশ্ন</span>
                       <Badge variant="secondary">{confirmationData.questionBreakdown.mcq}</Badge>
                     </div>
                   )}
                   {confirmationData.questionBreakdown.cq > 0 && (
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
-                      <span className="text-sm">Creative Questions</span>
+                      <span className="text-sm">সৃজনশীল প্রশ্ন</span>
                       <Badge variant="secondary">{confirmationData.questionBreakdown.cq}</Badge>
                     </div>
                   )}
@@ -137,29 +137,29 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <User className="h-5 w-5 text-primary" />
-            Question Set Summary
+            প্রশ্ন সেট সারসংক্ষেপ
           </CardTitle>
-          <CardDescription>Overview of your configured question set</CardDescription>
+          <CardDescription>আপনার কনফিগার করা প্রশ্ন সেটের সংক্ষিপ্ত বিবরণ</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="text-center p-4 bg-gradient-secondary rounded-lg">
               <div className="text-2xl font-bold text-primary mb-2">{formData.totalQuestions}</div>
-              <div className="text-sm text-muted-foreground">Total Questions</div>
+              <div className="text-sm text-muted-foreground">মোট প্রশ্ন</div>
             </div>
             
             <div className="text-center p-4 bg-gradient-secondary rounded-lg">
               <div className="text-2xl font-bold text-primary mb-2">
-                {formData.questionType === 'ai-generated' ? 'AI' : 'Manual'}
+                {formData.questionType === 'ai-generated' ? 'AI' : 'ম্যানুয়াল'}
               </div>
-              <div className="text-sm text-muted-foreground">Generation Type</div>
+              <div className="text-sm text-muted-foreground">তৈরি করার ধরন</div>
             </div>
             
             <div className="text-center p-4 bg-gradient-secondary rounded-lg">
               <div className="text-2xl font-bold text-primary mb-2">
-                {formData.method === 'board-book' ? 'Board' : 'Guide'}
+                {formData.method === 'board-book' ? 'বোর্ড' : 'গাইড'}
               </div>
-              <div className="text-sm text-muted-foreground">Source Method</div>
+              <div className="text-sm text-muted-foreground">উৎস পদ্ধতি</div>
             </div>
           </div>
         </CardContent>
@@ -169,12 +169,12 @@ export function QuestionSetConfirmation({ formData, onNext }: QuestionSetConfirm
       <Card className="bg-primary/5 border-primary/20 shadow-soft">
         <CardContent className="pt-6">
           <div className="text-center space-y-4">
-            <h3 className="text-lg font-semibold text-primary">Ready to Add Questions?</h3>
+            <h3 className="text-lg font-semibold text-primary">প্রশ্ন যোগ করার জন্য প্রস্তুত?</h3>
             <p className="text-muted-foreground">
-              Your question set framework is ready. Click below to start selecting specific questions for your exam.
+              আপনার প্রশ্ন সেট কাঠামো প্রস্তুত। আপনার পরীক্ষার জন্য নির্দিষ্ট প্রশ্ন নির্বাচন শুরু করতে নিচে ক্লিক করুন।
             </p>
             <Button onClick={onNext} size="lg" className="px-8">
-              Add Questions
+              প্রশ্ন যোগ করুন
             </Button>
           </div>
         </CardContent>

@@ -17,24 +17,24 @@ interface InitialSetupStepProps {
 export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSetupStepProps) {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const classes = Array.from({ length: 10 }, (_, i) => `Class ${i + 3}`);
-  const groups = ["Science", "Commerce", "Humanities"];
-  const subjects = ["Physics", "Chemistry", "Mathematics", "Biology", "English", "History"];
-  const chapters = ["Chapter 1: Introduction", "Chapter 2: Fundamentals", "Chapter 3: Advanced Topics"];
+  const classes = Array.from({ length: 10 }, (_, i) => `ক্লাস ${i + 3}`);
+  const groups = ["বিজ্ঞান", "বাণিজ্য", "মানবিক"];
+  const subjects = ["পদার্থবিজ্ঞান", "রসায়ন", "গণিত", "জীববিজ্ঞান", "ইংরেজি", "ইতিহাস"];
+  const chapters = ["অধ্যায় ১: ভূমিকা", "অধ্যায় ২: মৌলিক বিষয়", "অধ্যায় ৩: উন্নত বিষয়"];
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.questionType) newErrors.questionType = "Please select a valid question type.";
-    if (!formData.method) newErrors.method = "Please select a valid method.";
-    if (!formData.examName.trim()) newErrors.examName = "Please enter a valid exam name.";
-    if (!formData.class) newErrors.class = "Please select a valid class.";
-    if (!formData.group) newErrors.group = "Please select a valid group.";
-    if (!formData.subject) newErrors.subject = "Please select a subject.";
-    if (!formData.chapter) newErrors.chapter = "Please select a chapter.";
-    if (!formData.questionTypeDetail) newErrors.questionTypeDetail = "Please select a question type.";
+    if (!formData.questionType) newErrors.questionType = "অনুগ্রহ করে একটি বৈধ প্রশ্নের ধরন নির্বাচন করুন।";
+    if (!formData.method) newErrors.method = "অনুগ্রহ করে একটি বৈধ পদ্ধতি নির্বাচন করুন।";
+    if (!formData.examName.trim()) newErrors.examName = "অনুগ্রহ করে একটি বৈধ পরীক্ষার নাম প্রবেশ করান।";
+    if (!formData.class) newErrors.class = "অনুগ্রহ করে একটি বৈধ ক্লাস নির্বাচন করুন।";
+    if (!formData.group) newErrors.group = "অনুগ্রহ করে একটি বৈধ গ্রুপ নির্বাচন করুন।";
+    if (!formData.subject) newErrors.subject = "অনুগ্রহ করে একটি বিষয় নির্বাচন করুন।";
+    if (!formData.chapter) newErrors.chapter = "অনুগ্রহ করে একটি অধ্যায় নির্বাচন করুন।";
+    if (!formData.questionTypeDetail) newErrors.questionTypeDetail = "অনুগ্রহ করে একটি প্রশ্নের ধরন নির্বাচন করুন।";
     if (!formData.totalQuestions || formData.totalQuestions <= 0) {
-      newErrors.totalQuestions = "Please enter a valid number of questions.";
+      newErrors.totalQuestions = "অনুগ্রহ করে প্রশ্নের সংখ্যার একটি বৈধ সংখ্যা প্রবেশ করান।";
     }
 
     setErrors(newErrors);
@@ -150,19 +150,19 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <GraduationCap className="h-5 w-5 text-primary" />
-            Exam Information
+            পরীক্ষার তথ্য
           </CardTitle>
           <CardDescription>
-            Configure the basic details for your question set
+            আপনার প্রশ্ন সেটের জন্য মৌলিক বিবরণ কনফিগার করুন
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="examName">Exam Name *</Label>
+              <Label htmlFor="examName">পরীক্ষার নাম *</Label>
               <Input
                 id="examName"
-                placeholder="e.g., Mid-term Physics Exam"
+                placeholder="যেমন, মধ্যবার্ষিক পদার্থবিজ্ঞান পরীক্ষা"
                 value={formData.examName}
                 onChange={(e) => updateFormData({ examName: e.target.value })}
                 className={errors.examName ? "border-destructive" : ""}
@@ -173,10 +173,10 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="class">Class *</Label>
+              <Label htmlFor="class">ক্লাস *</Label>
               <Select value={formData.class} onValueChange={(value) => updateFormData({ class: value })}>
                 <SelectTrigger className={errors.class ? "border-destructive" : ""}>
-                  <SelectValue placeholder="Select class" />
+                  <SelectValue placeholder="ক্লাস নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
                   {classes.map((cls) => (
@@ -190,10 +190,10 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="group">Group *</Label>
+              <Label htmlFor="group">গ্রুপ *</Label>
               <Select value={formData.group} onValueChange={(value) => updateFormData({ group: value })}>
                 <SelectTrigger className={errors.group ? "border-destructive" : ""}>
-                  <SelectValue placeholder="Select group" />
+                  <SelectValue placeholder="গ্রুপ নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
                   {groups.map((group) => (
@@ -207,10 +207,10 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="subject">Subject *</Label>
+              <Label htmlFor="subject">বিষয় *</Label>
               <Select value={formData.subject} onValueChange={(value) => updateFormData({ subject: value })}>
                 <SelectTrigger className={errors.subject ? "border-destructive" : ""}>
-                  <SelectValue placeholder="Select subject" />
+                  <SelectValue placeholder="বিষয় নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
                   {subjects.map((subject) => (
@@ -224,10 +224,10 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="chapter">Chapter *</Label>
+              <Label htmlFor="chapter">অধ্যায় *</Label>
               <Select value={formData.chapter} onValueChange={(value) => updateFormData({ chapter: value })}>
                 <SelectTrigger className={errors.chapter ? "border-destructive" : ""}>
-                  <SelectValue placeholder="Select chapter" />
+                  <SelectValue placeholder="অধ্যায় নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
                   {chapters.map((chapter) => (
@@ -241,15 +241,15 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="questionType">Question Type *</Label>
+              <Label htmlFor="questionType">প্রশ্নের ধরন *</Label>
               <Select value={formData.questionTypeDetail} onValueChange={(value) => updateFormData({ questionTypeDetail: value as any })}>
                 <SelectTrigger className={errors.questionTypeDetail ? "border-destructive" : ""}>
-                  <SelectValue placeholder="Select question type" />
+                  <SelectValue placeholder="প্রশ্নের ধরন নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="mcq">MCQ (Multiple Choice)</SelectItem>
-                  <SelectItem value="cq">CQ (Creative Questions)</SelectItem>
-                  <SelectItem value="both">Both MCQ & CQ</SelectItem>
+                  <SelectItem value="mcq">MCQ (বহুনির্বাচনী)</SelectItem>
+                  <SelectItem value="cq">CQ (সৃজনশীল প্রশ্ন)</SelectItem>
+                  <SelectItem value="both">উভয় MCQ ও CQ</SelectItem>
                 </SelectContent>
               </Select>
               {errors.questionTypeDetail && (
@@ -259,11 +259,11 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="totalQuestions">Total Number of Questions *</Label>
+            <Label htmlFor="totalQuestions">মোট প্রশ্নের সংখ্যা *</Label>
             <Input
               id="totalQuestions"
               type="number"
-              placeholder="e.g., 20"
+              placeholder="যেমন, ২০"
               min="1"
               max="100"
               value={formData.totalQuestions || ""}
@@ -274,7 +274,7 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
               <p className="text-sm text-destructive">{errors.totalQuestions}</p>
             )}
             <p className="text-sm text-muted-foreground">
-              Recommended: 10-30 questions for optimal assessment
+              সুপারিশ: সর্বোত্তম মূল্যায়নের জন্য ১০-৩০টি প্রশ্ন
             </p>
           </div>
         </CardContent>
@@ -283,7 +283,7 @@ export function InitialSetupStep({ formData, updateFormData, onNext }: InitialSe
       {/* Action Button */}
       <div className="flex justify-end">
         <Button onClick={handleNext} size="lg" className="px-8">
-          Create Question Set
+          প্রশ্ন সেট তৈরি করুন
         </Button>
       </div>
     </div>

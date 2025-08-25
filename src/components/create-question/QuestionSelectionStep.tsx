@@ -101,25 +101,25 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
 
   const handleNext = () => {
     if (selectedQuestions.length === 0) {
-      alert("Please select at least one question before proceeding.");
+      alert("পরবর্তী ধাপে যাওয়ার আগে অনুগ্রহ করে কমপক্ষে একটি প্রশ্ন নির্বাচন করুন।");
       return;
     }
     onNext();
   };
 
   const specialSearchOptions = [
-    "Repeated Board Question",
-    "Mathematical",
-    "Theoretical", 
-    "Image-based Questions",
-    "Polynomial Completion",
-    "Other Data-Based"
+    "পুনরাবৃত্ত বোর্ড প্রশ্ন",
+    "গাণিতিক",
+    "তাত্ত্বিক", 
+    "চিত্র-ভিত্তিক প্রশ্ন",
+    "বহুপদী সম্পূর্ণকরণ",
+    "অন্যান্য তথ্য-ভিত্তিক"
   ];
 
-  const topicOptions = ["Topic A", "Topic B", "Topic C", "Advanced Topics"];
-  const boardOptions = ["Dhaka Board", "Chittagong Board", "Sylhet Board", "Rajshahi Board"];
-  const yearOptions = ["2024", "2023", "2022", "2021", "2020"];
-  const schoolOptions = ["ABC School", "XYZ College", "DEF Institute", "GHI Academy"];
+  const topicOptions = ["বিষয় ক", "বিষয় খ", "বিষয় গ", "উন্নত বিষয়সমূহ"];
+  const boardOptions = ["ঢাকা বোর্ড", "চট্টগ্রাম বোর্ড", "সিলেট বোর্ড", "রাজশাহী বোর্ড"];
+  const yearOptions = ["২০২৪", "২০২৩", "২০২২", "২০২১", "২০২০"];
+  const schoolOptions = ["এবিসি স্কুল", "এক্সওয়াইজেড কলেজ", "ডিইএফ ইনস্টিটিউট", "জিএইচআই একাডেমি"];
 
   return (
     <div className="flex gap-6 h-[calc(100vh-200px)]">
@@ -183,15 +183,15 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-blue-600" />
-                Available Questions
+                উপলব্ধ প্রশ্নসমূহ
               </CardTitle>
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="sm" onClick={selectAll} className="border-blue-600 text-blue-600 hover:bg-blue-50">
                   <CheckSquare className="h-4 w-4 mr-1" />
-                  Select All
+                  সব নির্বাচন করুন
                 </Button>
                 <span className="text-sm text-muted-foreground">
-                  {selectedQuestions.length} / {formData.totalQuestions} selected
+                  {selectedQuestions.length} / {formData.totalQuestions} নির্বাচিত
                 </span>
               </div>
             </div>
@@ -224,21 +224,21 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
                       {question.hasImage && (
                         <Badge variant="outline" className="flex items-center gap-1">
                           <ImageIcon className="h-3 w-3" />
-                          Image
+                          চিত্র
                         </Badge>
                       )}
                       
                       {question.isMathematical && (
                         <Badge variant="outline" className="flex items-center gap-1">
                           <Calculator className="h-3 w-3" />
-                          Math
+                          গণিত
                         </Badge>
                       )}
                       
                       {question.isRepeated && (
                         <Badge variant="outline" className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          Repeated
+                          পুনরাবৃত্ত
                         </Badge>
                       )}
                     </div>
@@ -272,11 +272,11 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
               disabled={currentPage === 1}
             >
               <ChevronLeft className="h-4 w-4 mr-1" />
-              Previous
+              পূর্ববর্তী
             </Button>
             
             <span className="text-sm text-muted-foreground">
-              Page {currentPage} of {totalPages}
+              পৃষ্ঠা {currentPage} এর মধ্যে {totalPages}
             </span>
             
             <Button 
@@ -285,13 +285,13 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
               onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
             >
-              Next
+              পরবর্তী
               <ChevronRight className="h-4 w-4 ml-1" />
             </Button>
           </div>
 
           <Button onClick={handleNext} size="lg" className="px-8 bg-blue-600 hover:bg-blue-700">
-            Continue to Preview
+            প্রিভিউতে চালিয়ে যান
           </Button>
         </div>
       </div>
@@ -303,16 +303,16 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
           <CardHeader className="bg-blue-600 text-white">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Search className="h-5 w-5" />
-              Advanced Filters
+              উন্নত ফিল্টার
             </CardTitle>
           </CardHeader>
           <CardContent className="p-4 space-y-4">
             {/* Keyword Search */}
             <div className="space-y-2">
-              <Label htmlFor="keyword">Keyword Search</Label>
+              <Label htmlFor="keyword">কীওয়ার্ড অনুসন্ধান</Label>
               <Input
                 id="keyword"
-                placeholder="Search questions..."
+                placeholder="প্রশ্ন খুঁজুন..."
                 value={filters.keyword}
                 onChange={(e) => setFilters({ ...filters, keyword: e.target.value })}
               />
@@ -320,7 +320,7 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
 
             {/* Special Search */}
             <div className="space-y-2">
-              <Label>Special Search</Label>
+              <Label>বিশেষ অনুসন্ধান</Label>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {specialSearchOptions.map((option) => (
                   <div key={option} className="flex items-center space-x-2">
@@ -343,10 +343,10 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
 
             {/* Topics */}
             <div className="space-y-2">
-              <Label>Topics by Chapter</Label>
+              <Label>অধ্যায় অনুযায়ী বিষয়সমূহ</Label>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select topics" />
+                  <SelectValue placeholder="বিষয় নির্বাচন করুন" />
                 </SelectTrigger>
                 <SelectContent>
                   {topicOptions.map((topic) => (
@@ -358,11 +358,11 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
 
             {/* Board & Year */}
             <div className="space-y-2">
-              <Label>Board & Year</Label>
+              <Label>বোর্ড ও বছর</Label>
               <div className="space-y-2">
                 <Select>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select year" />
+                    <SelectValue placeholder="বছর নির্বাচন করুন" />
                   </SelectTrigger>
                   <SelectContent>
                     {yearOptions.map((year) => (
@@ -372,7 +372,7 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
                 </Select>
                 <Select>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select board" />
+                    <SelectValue placeholder="বোর্ড নির্বাচন করুন" />
                   </SelectTrigger>
                   <SelectContent>
                     {boardOptions.map((board) => (
@@ -390,7 +390,7 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
           <CardHeader className="bg-blue-600 text-white">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Download className="h-5 w-5" />
-              Export Settings
+              রপ্তানি সেটিংস
             </CardTitle>
           </CardHeader>
           <CardContent className="p-4 space-y-4">
@@ -408,7 +408,7 @@ export function QuestionSelectionStep({ formData, updateFormData, onNext }: Ques
 
             {/* Paper Size */}
             <div className="space-y-2">
-              <Label>Paper Size</Label>
+              <Label>কাগজের আকার</Label>
               <div className="grid grid-cols-3 gap-2">
                 {["A4", "A5", "Legal", "Letter"].map((size) => (
                   <Button 

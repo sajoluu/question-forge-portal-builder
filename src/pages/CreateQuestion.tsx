@@ -15,12 +15,12 @@ import { ExportStep } from "@/components/create-question/ExportStep";
 import { QuestionFormData } from "@/types/question";
 
 const steps = [
-  { id: 1, name: "Question Type", description: "Select type and method" },
-  { id: 2, name: "Setup Form", description: "Enter exam details" },
-  { id: 3, name: "Confirmation", description: "Confirm question set" },
-  { id: 4, name: "Select Questions", description: "Choose specific questions" },
-  { id: 5, name: "Preview & Settings", description: "Review and customize" },
-  { id: 6, name: "Export", description: "Finalize and download" }
+  { id: 1, name: "প্রশ্ন ধরন", description: "ধরন এবং পদ্ধতি নির্বাচন করুন" },
+  { id: 2, name: "সেটআপ ফর্ম", description: "পরীক্ষার বিবরণ প্রবেশ করান" },
+  { id: 3, name: "নিশ্চিতকরণ", description: "প্রশ্ন সেট নিশ্চিত করুন" },
+  { id: 4, name: "প্রশ্ন নির্বাচন", description: "নির্দিষ্ট প্রশ্ন নির্বাচন করুন" },
+  { id: 5, name: "প্রিভিউ ও সেটিংস", description: "পর্যালোচনা এবং কাস্টমাইজ করুন" },
+  { id: 6, name: "রপ্তানি", description: "চূড়ান্ত এবং ডাউনলোড করুন" }
 ];
 
 const CreateQuestion = () => {
@@ -119,27 +119,27 @@ const CreateQuestion = () => {
       {/* Header */}
       <div className="space-y-4">
         <div className="flex items-center gap-2 text-sm text-guardey-teal">
-          <span>Dashboard</span>
+          <span>ড্যাশবোর্ড</span>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-guardey-dark font-medium">Create Question</span>
+          <span className="text-guardey-dark font-medium">প্রশ্ন তৈরি করুন</span>
         </div>
         
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-guardey-dark">Create Question Set</h1>
+            <h1 className="text-3xl font-bold text-guardey-dark">প্রশ্ন সেট তৈরি করুন</h1>
             <p className="text-guardey-teal">
-              Build comprehensive question sets with AI assistance and advanced filtering
+              এআই সহায়তা এবং উন্নত ফিল্টারিং দিয়ে বিস্তৃত প্রশ্ন সেট তৈরি করুন
             </p>
           </div>
           
           <div className="flex items-center gap-2">
             <Badge variant="secondary" className="flex items-center gap-2 bg-guardey-lime/20 text-guardey-lime border-guardey-lime/30 btn-glow">
               <Sparkles className="h-3 w-3" />
-              AI Powered
+              এআই চালিত
             </Badge>
             <Badge variant="outline" className="flex items-center gap-2 border-guardey-teal text-guardey-teal">
               <BookOpen className="h-3 w-3" />
-              Multi-Format
+              বহু-ফরম্যাট
             </Badge>
           </div>
         </div>
@@ -149,9 +149,9 @@ const CreateQuestion = () => {
       <Card className="shadow-soft border-guardey-teal/20">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-lg text-guardey-dark">Progress</CardTitle>
+            <CardTitle className="text-lg text-guardey-dark">অগ্রগতি</CardTitle>
             <span className="text-sm text-guardey-teal">
-              Step {currentStep} of {steps.length}
+              ধাপ {currentStep} এর মধ্যে {steps.length}
             </span>
           </div>
           <Progress value={progress} className="h-2" />
@@ -207,7 +207,7 @@ const CreateQuestion = () => {
             className="flex items-center gap-2 border-guardey-teal text-guardey-teal hover:bg-guardey-teal hover:text-white btn-glow"
           >
             <ArrowLeft className="h-4 w-4" />
-            Previous Step
+            পূর্ববর্তী ধাপ
           </Button>
           
           {currentStep < steps.length && (
@@ -215,7 +215,7 @@ const CreateQuestion = () => {
               onClick={nextStep}
               className="flex items-center gap-2 bg-guardey-lime text-guardey-lime-foreground hover:bg-guardey-lime/90 btn-glow"
             >
-              Next Step
+              পরবর্তী ধাপ
               <ArrowRight className="h-4 w-4" />
             </Button>
           )}
