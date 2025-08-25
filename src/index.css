@@ -10,33 +10,33 @@
     /* Modern Background System - Light Sage Green */
     --background: 120 15% 94%;
     --background-secondary: 120 15% 92%;
-    --foreground: 210 100% 15%;
+    --foreground: 209 100% 9%;
 
     /* Modern Card System with Light Theme */
     --card: 120 15% 96%;
-    --card-foreground: 210 100% 15%;
+    --card-foreground: 209 100% 9%;
     --card-glass: hsla(120, 15%, 100%, 0.8);
     --card-border: 120 15% 85%;
 
     --popover: 120 15% 98%;
-    --popover-foreground: 210 100% 15%;
+    --popover-foreground: 209 100% 9%;
 
-    /* Dark Blue Primary Colors - Updated to #00264D */
-    --primary: 210 100% 15%;
-    --primary-dark: 210 100% 12%;
-    --primary-light: 210 100% 20%;
+    /* Dark Blue Primary Colors - Updated to #00172D */
+    --primary: 209 100% 9%;
+    --primary-dark: 209 100% 7%;
+    --primary-light: 209 100% 12%;
     --primary-foreground: 120 15% 98%;
-    --primary-hover: 210 100% 18%;
-    --primary-glow: 210 100% 25%;
+    --primary-hover: 209 100% 11%;
+    --primary-glow: 209 100% 15%;
 
-    /* Dark Blue Secondary Colors - Updated to #00264D */
-    --secondary: 210 100% 18%;
+    /* Dark Blue Secondary Colors - Updated to #00172D */
+    --secondary: 209 100% 11%;
     --secondary-foreground: 120 15% 98%;
-    --secondary-hover: 210 100% 22%;
+    --secondary-hover: 209 100% 13%;
 
     /* Light Theme Muted Colors */
     --muted: 120 15% 88%;
-    --muted-foreground: 210 80% 30%;
+    --muted-foreground: 209 80% 20%;
 
     /* Accent Colors - Complementary Teal */
     --accent: 180 70% 35%;
@@ -52,7 +52,7 @@
     --border: 120 15% 80%;
     --input: 120 15% 98%;
     --input-border: 120 15% 75%;
-    --ring: 210 100% 25%;
+    --ring: 209 100% 15%;
 
     /* Status Colors for Light Theme */
     --success: 142 70% 35%;
@@ -75,23 +75,23 @@
     --sage-green: 120 15% 85%;
     --sage-green-foreground: 120 15% 25%;
 
-    /* Light Theme Gradient System - Updated to #00264D */
-    --gradient-primary: linear-gradient(135deg, hsl(210 100% 15%) 0%, hsl(210 100% 25%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(210 100% 18%) 0%, hsl(210 100% 28%) 100%);
+    /* Light Theme Gradient System - Updated to #00172D */
+    --gradient-primary: linear-gradient(135deg, hsl(209 100% 9%) 0%, hsl(209 100% 15%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(209 100% 11%) 0%, hsl(209 100% 17%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(180 70% 35%) 0%, hsl(180 70% 45%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(210 100% 25%) 0%, hsl(180 70% 45%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(209 100% 15%) 0%, hsl(180 70% 45%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(120 15% 94%) 0%, hsl(120 20% 90%) 50%, hsl(180 20% 85%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(120 15% 98%) 0%, hsl(120 15% 95%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(120, 15%, 100%, 0.9) 0%, hsla(120, 15%, 95%, 0.8) 100%);
     
-    /* Light Theme Shadow System - Updated to #00264D */
-    --shadow-soft: 0 4px 20px -2px hsl(210 100% 15% / 0.15);
-    --shadow-medium: 0 10px 40px -5px hsl(210 100% 15% / 0.2);
-    --shadow-large: 0 25px 80px -15px hsl(210 100% 15% / 0.25);
-    --shadow-glow: 0 0 40px hsl(210 100% 25% / 0.3);
+    /* Light Theme Shadow System - Updated to #00172D */
+    --shadow-soft: 0 4px 20px -2px hsl(209 100% 9% / 0.15);
+    --shadow-medium: 0 10px 40px -5px hsl(209 100% 9% / 0.2);
+    --shadow-large: 0 25px 80px -15px hsl(209 100% 9% / 0.25);
+    --shadow-glow: 0 0 40px hsl(209 100% 15% / 0.3);
     --shadow-accent-glow: 0 0 40px hsl(180 70% 35% / 0.3);
-    --shadow-glass: 0 8px 32px hsl(210 100% 15% / 0.1);
-    --shadow-float: 0 20px 60px -10px hsl(210 100% 15% / 0.15);
+    --shadow-glass: 0 8px 32px hsl(209 100% 9% / 0.1);
+    --shadow-float: 0 20px 60px -10px hsl(209 100% 9% / 0.15);
 
     /* Modern Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -106,14 +106,14 @@
     --radius-lg: 1.5rem;
     --radius-xl: 2rem;
 
-    /* Light Theme Sidebar Colors - Updated to #00264D */
-    --sidebar-background: 210 100% 15%;
+    /* Light Theme Sidebar Colors - Updated to #00172D */
+    --sidebar-background: 209 100% 9%;
     --sidebar-foreground: 120 15% 95%;
     --sidebar-primary: 180 70% 35%;
     --sidebar-primary-foreground: 120 15% 98%;
-    --sidebar-accent: 210 100% 18%;
+    --sidebar-accent: 209 100% 11%;
     --sidebar-accent-foreground: 120 15% 90%;
-    --sidebar-border: 210 100% 12%;
+    --sidebar-border: 209 100% 7%;
     --sidebar-ring: 180 70% 35%;
   }
 
