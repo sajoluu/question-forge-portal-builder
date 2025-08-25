@@ -65,8 +65,9 @@ All colors MUST be HSL.
     --shadow-large: 0 25px 50px -12px hsl(222 84% 4.9% / 0.25);
     --shadow-glow: 0 0 30px hsl(200 95% 55% / 0.3);
 
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-glow: all 0.2s ease;
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-glow: all 0.2s ease;
+        --transition-sidebar: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
 
     --radius: 0.5rem;
 
@@ -156,5 +157,21 @@ All colors MUST be HSL.
   
   .card-hover {
     @apply transition-all duration-200 hover:shadow-medium hover:-translate-y-1;
+  }
+  
+  .sidebar-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .sidebar-item {
+    @apply relative flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+  
+  .sidebar-item:hover {
+    @apply bg-guardey-lime/20 text-guardey-dark-foreground;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-guardey-lime text-guardey-lime-foreground shadow-glow;
   }
 }
