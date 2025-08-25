@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Trendy Design System - All colors MUST be HSL - Kalpurush Bangla Font */
-@import url('https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* Modern Trendy Design System - All colors MUST be HSL */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -138,16 +138,14 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply bg-background text-foreground font-bangla;
     font-size: 16px;
     line-height: 1.6;
     scroll-behavior: smooth;
   }
 
   h1 { 
-    @apply text-4xl md:text-6xl font-bold mb-6;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply text-4xl md:text-6xl font-bold mb-6 font-bangla;
     background: var(--gradient-glow);
     background-clip: text;
     -webkit-background-clip: text;
@@ -155,20 +153,16 @@
     line-height: 1.1;
   }
   h2 { 
-    @apply text-3xl md:text-4xl font-semibold mb-4 text-foreground;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply text-3xl md:text-4xl font-semibold mb-4 text-foreground font-bangla;
   }
   h3 { 
-    @apply text-2xl md:text-3xl font-medium mb-3 text-foreground;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply text-2xl md:text-3xl font-medium mb-3 text-foreground font-bangla;
   }
   h4 { 
-    @apply text-xl md:text-2xl font-medium mb-3 text-foreground;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply text-xl md:text-2xl font-medium mb-3 text-foreground font-bangla;
   }
   p { 
-    @apply text-base md:text-lg leading-relaxed mb-4;
-    font-family: 'Kalpurush', system-ui, sans-serif;
+    @apply text-base md:text-lg leading-relaxed mb-4 font-bangla;
     color: hsl(var(--muted-foreground));
   }
 
