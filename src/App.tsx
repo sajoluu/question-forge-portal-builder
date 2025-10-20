@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateQuestion from "./pages/CreateQuestion";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import NotFound from "./pages/NotFound";
 import RoleList from "./pages/roles/RoleList";
@@ -31,6 +32,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
             <Route path="/create-question" element={<CreateQuestion />} />
             <Route path="/books" element={<Index />} />

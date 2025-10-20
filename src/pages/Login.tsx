@@ -156,19 +156,15 @@ const Login = () => {
                     console.log("Forgot password clicked");
                   }}
                 >
-                  Forgot password?
+                  পাসওয়ার্ড ভুলে গেছেন?
                 </a>
                 <div className="text-sm text-gray-600">
-                  Don't have an account?{" "}
+                  অ্যাকাউন্ট নেই?{" "}
                   <a
-                    href="#"
+                    href="/signup"
                     className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      console.log("Create account clicked");
-                    }}
                   >
-                    Create an account here
+                    এখানে নিবন্ধন করুন
                   </a>
                 </div>
               </div>
