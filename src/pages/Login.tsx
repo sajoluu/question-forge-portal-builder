@@ -1,18 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import learningIllustration from "@/assets/learning-illustration.png";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate("/");
+      }
+    };
+    checkUser();
+  }, [navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Just for UI demo - no actual authentication
-    console.log("Login attempted with:", { email, password });
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast({
+          title: "লগইন ব্যর্থ হয়েছে",
+          description: error.message === "Invalid login credentials" 
+            ? "ইমেইল বা পাসওয়ার্ড ভুল" 
+            : error.message,
+          variant: "destructive",
+        });
+      } else if (data.session) {
+        toast({
+          title: "সফলভাবে লগইন হয়েছে",
+          description: "আপনাকে ড্যাশবোর্ডে নিয়ে যাওয়া হচ্ছে...",
+        });
+        navigate("/");
+      }
+    } catch (error: any) {
+      toast({
+        title: "একটি ত্রুটি ঘটেছে",
+        description: "অনুগ্রহ করে আবার চেষ্টা করুন",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -89,9 +135,10 @@ const Login = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg h-12 text-base transition-colors"
+                disabled={isLoading}
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg h-12 text-base transition-colors disabled:opacity-50"
               >
-                Sign in
+                {isLoading ? "লগইন হচ্ছে..." : "লগইন করুন"}
               </Button>
 
               <div className="relative">

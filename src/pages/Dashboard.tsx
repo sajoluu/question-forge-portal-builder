@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,12 +10,67 @@ import {
   TrendingUp,
   Clock,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  LogOut
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
+import type { User } from "@supabase/supabase-js";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Check authentication and set up listener
+  useEffect(() => {
+    // Get initial session
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        navigate("/login");
+      } else {
+        setUser(session.user);
+      }
+      setIsLoading(false);
+    };
+
+    checkAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (!session) {
+          navigate("/login");
+        } else {
+          setUser(session.user);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    toast({
+      title: "লগআউট সফল",
+      description: "আপনি সফলভাবে লগআউট হয়েছেন",
+    });
+    navigate("/login");
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">লোড হচ্ছে...</p>
+        </div>
+      </div>
+    );
+  }
 
   const stats = [
     {
@@ -102,11 +158,21 @@ const Dashboard = () => {
   return (
     <div className="space-y-6 bg-gradient-to-br from-background to-guardey-dark/5 min-h-screen p-6">
       {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground">
-          Welcome to your teaching portal. Manage questions, create assessments, and track progress.
-        </p>
+      <div className="flex justify-between items-start">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground">
+            স্বাগতম {user?.email}! আপনার শিক্ষা পোর্টালে প্রশ্ন পরিচালনা করুন।
+          </p>
+        </div>
+        <Button 
+          onClick={handleLogout}
+          variant="outline"
+          className="flex items-center gap-2"
+        >
+          <LogOut className="h-4 w-4" />
+          লগআউট
+        </Button>
       </div>
 
       {/* Quick Actions */}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import learningIllustration from "@/assets/learning-illustration.png";
 import { Eye, EyeOff, CheckCircle2, XCircle } from "lucide-react";
 
@@ -27,11 +28,23 @@ const SignUp = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState<PasswordStrength>({
     score: 0,
     label: "",
     color: ""
   });
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        navigate("/");
+      }
+    };
+    checkUser();
+  }, [navigate]);
 
   // Password validation checks
   const passwordChecks = {
@@ -119,7 +132,7 @@ const SignUp = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate all fields
@@ -145,18 +158,55 @@ const SignUp = () => {
 
     // If no errors, proceed with signup
     if (Object.keys(newErrors).length === 0) {
-      // In real app, make API call to create account
-      console.log("Account creation with:", formData);
+      setIsLoading(true);
       
-      toast({
-        title: "অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!",
-        description: "লগইন করতে অনুগ্রহ করে আপনার ইমেইল যাচাই করুন",
-      });
-      
-      // Redirect to login page
-      setTimeout(() => {
-        navigate("/login");
-      }, 1500);
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email: formData.email,
+          password: formData.password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/`,
+            data: {
+              full_name: formData.fullName,
+              phone_number: formData.phoneNumber,
+            }
+          }
+        });
+
+        if (error) {
+          if (error.message.includes("already registered")) {
+            toast({
+              title: "এই ইমেইল ইতিমধ্যে নিবন্ধিত",
+              description: "অনুগ্রহ করে লগইন করুন বা অন্য ইমেইল ব্যবহার করুন",
+              variant: "destructive",
+            });
+          } else {
+            toast({
+              title: "নিবন্ধন ব্যর্থ হয়েছে",
+              description: error.message,
+              variant: "destructive",
+            });
+          }
+        } else {
+          toast({
+            title: "অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!",
+            description: "আপনাকে ড্যাশবোর্ডে নিয়ে যাওয়া হচ্ছে...",
+          });
+          
+          // Auto-redirect to dashboard since auto-confirm is enabled
+          setTimeout(() => {
+            navigate("/");
+          }, 1500);
+        }
+      } catch (error: any) {
+        toast({
+          title: "একটি ত্রুটি ঘটেছে",
+          description: "অনুগ্রহ করে আবার চেষ্টা করুন",
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -361,9 +411,10 @@ const SignUp = () => {
 
               <Button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg h-12 text-base transition-colors"
+                disabled={isLoading}
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg h-12 text-base transition-colors disabled:opacity-50"
               >
-                অ্যাকাউন্ট তৈরি করুন
+                {isLoading ? "তৈরি হচ্ছে..." : "অ্যাকাউন্ট তৈরি করুন"}
               </Button>
 
               <div className="text-center text-sm text-gray-600">
