@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Download, Printer, FileText, Share2, Mail, Trophy } from "lucide-react";
 import { QuestionFormData } from "@/types/question";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ExportStepProps {
   formData: QuestionFormData;
@@ -32,16 +33,50 @@ export function ExportStep({ formData }: ExportStepProps) {
   const handleSave = async () => {
     setIsExporting(true);
     
-    // Simulate save process
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "প্রশ্ন সেট সংরক্ষিত!",
-      description: "আপনার প্রশ্ন সেট সফলভাবে সংরক্ষণ করা হয়েছে।",
-      variant: "default",
-    });
-    
-    setIsExporting(false);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        toast({
+          title: "প্রমাণীকরণ ত্রুটি",
+          description: "প্রশ্ন সেট সংরক্ষণ করতে আপনাকে লগইন করতে হবে।",
+          variant: "destructive",
+        });
+        setIsExporting(false);
+        return;
+      }
+
+      const { error } = await supabase.from('questions').insert({
+        user_id: user.id,
+        question_type: formData.questionType,
+        method: formData.method,
+        exam_name: formData.examName,
+        class: formData.class,
+        group: formData.group,
+        subject: formData.subject,
+        chapter: formData.chapter,
+        question_type_detail: formData.questionTypeDetail,
+        total_questions: formData.totalQuestions,
+        selected_questions: formData.selectedQuestions,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "প্রশ্ন সেট সংরক্ষিত!",
+        description: "আপনার প্রশ্ন সেট সফলভাবে সংরক্ষণ করা হয়েছে।",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error('Error saving question set:', error);
+      toast({
+        title: "সংরক্ষণ ব্যর্থ",
+        description: "প্রশ্ন সেট সংরক্ষণ করতে সমস্যা হয়েছে।",
+        variant: "destructive",
+      });
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   const exportOptions = [

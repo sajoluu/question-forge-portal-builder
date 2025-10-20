@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      questions: {
+        Row: {
+          chapter: string
+          class: string
+          created_at: string
+          exam_name: string
+          group: string
+          id: string
+          method: string
+          question_type: string
+          question_type_detail: string
+          selected_questions: Json | null
+          subject: string
+          total_questions: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter: string
+          class: string
+          created_at?: string
+          exam_name: string
+          group: string
+          id?: string
+          method: string
+          question_type: string
+          question_type_detail: string
+          selected_questions?: Json | null
+          subject: string
+          total_questions: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string
+          class?: string
+          created_at?: string
+          exam_name?: string
+          group?: string
+          id?: string
+          method?: string
+          question_type?: string
+          question_type_detail?: string
+          selected_questions?: Json | null
+          subject?: string
+          total_questions?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
