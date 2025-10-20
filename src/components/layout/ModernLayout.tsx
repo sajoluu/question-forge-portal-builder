@@ -1,11 +1,8 @@
+import { Outlet } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 
-interface ModernLayoutProps {
-  children: React.ReactNode;
-}
-
-export function ModernLayout({ children }: ModernLayoutProps) {
+export function ModernLayout() {
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full bg-gradient-hero relative overflow-hidden">
@@ -43,7 +40,7 @@ export function ModernLayout({ children }: ModernLayoutProps) {
             </div>
             
             <div className="max-w-7xl mx-auto relative z-10">
-              {children}
+              <Outlet />
             </div>
           </main>
         </div>

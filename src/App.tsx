@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ModernLayout } from "./components/layout/ModernLayout";
+import Portal from "./pages/Portal";
 import Dashboard from "./pages/Dashboard";
 import CreateQuestion from "./pages/CreateQuestion";
 import Index from "./pages/Index";
@@ -28,9 +29,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ModernLayout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
+        <Routes>
+          {/* Public routes without layout */}
+          <Route path="/" element={<Portal />} />
+          
+          {/* Protected routes with layout */}
+          <Route element={<ModernLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
@@ -50,8 +55,8 @@ const App = () => (
             <Route path="/contact" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </ModernLayout>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

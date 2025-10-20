@@ -19,7 +19,7 @@ const Login = () => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/");
+        navigate("/dashboard");
       }
     };
     checkUser();
@@ -48,7 +48,7 @@ const Login = () => {
           title: "সফলভাবে লগইন হয়েছে",
           description: "আপনাকে ড্যাশবোর্ডে নিয়ে যাওয়া হচ্ছে...",
         });
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (error: any) {
       toast({

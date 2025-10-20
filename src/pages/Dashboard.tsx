@@ -42,7 +42,7 @@ const Dashboard = () => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (!session) {
-          navigate("/login");
+          navigate("/");
         } else {
           setUser(session.user);
         }
@@ -58,7 +58,7 @@ const Dashboard = () => {
       title: "লগআউট সফল",
       description: "আপনি সফলভাবে লগআউট হয়েছেন",
     });
-    navigate("/login");
+    navigate("/");
   };
 
   if (isLoading) {

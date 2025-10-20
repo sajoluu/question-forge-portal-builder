@@ -40,7 +40,7 @@ const SignUp = () => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/");
+        navigate("/dashboard");
       }
     };
     checkUser();
@@ -165,7 +165,7 @@ const SignUp = () => {
           email: formData.email,
           password: formData.password,
           options: {
-            emailRedirectTo: `${window.location.origin}/`,
+            emailRedirectTo: `${window.location.origin}/dashboard`,
             data: {
               full_name: formData.fullName,
               phone_number: formData.phoneNumber,
@@ -195,7 +195,7 @@ const SignUp = () => {
           
           // Auto-redirect to dashboard since auto-confirm is enabled
           setTimeout(() => {
-            navigate("/");
+            navigate("/dashboard");
           }, 1500);
         }
       } catch (error: any) {
